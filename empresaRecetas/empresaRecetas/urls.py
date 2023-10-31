@@ -21,4 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('appEmpresaRecetas/', include('appEmpresaRecetas.urls'))
 ]
-
+print("gola")
