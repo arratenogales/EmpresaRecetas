@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalles de la receta {% endblock %}
+
+{% block contenido %}
+<h2>Datos de la receta</h2>
+
+{% if receta %}
+    <ul>
+        <li>
+            {{ receta.nombre}}
+        </li>
+        <li>
+            {{ receta.duracion}}
+        </li>
+        <li>
+            {{ receta.tipo}}
+        </li>
+        <li>
+            <a href="/appEmpresaDjango/receta/{{ receta.id }}/ingredientes">Ver ingredientes</a>
+        </li>
+    </ul>
+{% else %}
+    <p>No existe esta receta.</p>
+{% endif %}
+
+{% endblock %}

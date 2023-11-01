@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de recetas{% endblock %}
+
+{% block contenido %}
+<h2>Listado de recetas</h2>
+{% if lista_recetas %}
+	<ul>
+	{% for d in lista_recetas %}
+		<li>
+		    <a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay recetas.</p>
+{% endif %}
+{% endblock %}
