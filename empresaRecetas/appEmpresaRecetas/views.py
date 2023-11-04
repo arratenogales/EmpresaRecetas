@@ -7,6 +7,12 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Receta, TipoPlato, Ingrediente
 
+#devuelve recetas por cada tipo y en orden de duracion
+def index_portada(request):
+    recetas = Receta.objects.values('tipoplato').order_by('duracion')
+    context = {'lista_recetas_portada': recetas}
+    return render(request, 'portada.html', context)
+
 #devuelve el listado de recetas
 def index_recetas(request):
 	recetas = get_list_or_404(Receta.objects.order_by('nombre'))
