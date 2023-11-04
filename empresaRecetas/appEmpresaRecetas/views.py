@@ -9,7 +9,8 @@ from .models import Receta, TipoPlato, Ingrediente
 
 #devuelve recetas por cada tipo y en orden de duracion
 def index_portada(request):
-    recetas = Receta.objects.values('tipoplato').order_by('duracion')
+	
+    recetas = Receta.objects.values('tipo').order_by('duracion')
     context = {'lista_recetas_portada': recetas}
     return render(request, 'portada.html', context)
 
