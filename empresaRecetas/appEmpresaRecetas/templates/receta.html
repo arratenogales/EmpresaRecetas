@@ -16,10 +16,17 @@
         <li>
             {{ receta.tipo}}
         </li>
-        <li>
-            {{receta.ingredientes}}
-        </li>
     </ul>
+    <h3>Lista de ingredientes</h3>
+	{% if ingrediente %}
+		<ol>
+		{% for i in ingredientes %}
+			<li><a href="/appEmpresaRecetas/ingredientes/{{ i.id }}">{{ i.nombre}}</a></li>
+		{% endfor %}
+		</ol>
+	{% endif %}
+
+
 {% else %}
     <p>No existe esta receta.</p>
 {% endif %}
