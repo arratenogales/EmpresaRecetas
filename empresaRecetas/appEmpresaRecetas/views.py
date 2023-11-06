@@ -8,12 +8,13 @@ from django.db.models import Max
 def index(request):
     return HttpResponse("Recetas")
 
+"""recetas_con_max_duracion =get_list_or_404(Receta.objects.order_by('duracion'))"""
+   
 #devuelve recetas por cada tipo y en orden de duracion
 def index_portada(request):
-   """ recetas_con_max_duracion =get_list_or_404( Receta.objects.values('tipo').annotate(max_duracion=Max('duracion')))"""
-   """recetas_con_max_duracion =get_list_or_404(Receta.objects.order_by('duracion'))"""
-   context = {'lista_recetas_portada': recetas_con_max_duracion}
-   return render(request, 'portada.html', context)
+    recetas_con_max_duracion =get_list_or_404( Receta.objects.values('tipo').annotate(max_duracion=Max('duracion')))
+    context = {'lista_recetas_portada': recetas_con_max_duracion}
+    return render(request, 'portada.html', context)
 
 
 #devuelve el listado de recetas
