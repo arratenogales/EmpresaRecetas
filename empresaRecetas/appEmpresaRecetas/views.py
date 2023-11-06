@@ -25,7 +25,7 @@ def index_ingredientes(request, receta_id):
 	output = ', '.join([e.nombre for e in receta.ingredientes_set.all()])
 	return HttpResponse(output)
 
-#devuelve los detalles de un ingrediente
+#devuelve los detalles de un ingrediente 
 def show_ingrediente(request, ingrediente_id):
 	ingrediente = Ingrediente.objects.get(pk=ingrediente_id)
 	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'
