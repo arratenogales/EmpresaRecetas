@@ -1,20 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def index(request):
-    return HttpResponse("Recetas")
 from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Receta, TipoPlato, Ingrediente
 from django.db.models import Max
+def index(request):
+    return HttpResponse("Recetas")
 
 #devuelve recetas por cada tipo y en orden de duracion
 def index_portada(request):
-
-    recetas = Receta.objects.values('tipo').annotate(max_duracion=Max('duracion'))
-    context = {'lista_recetas_portada': recetas}
-    return render(request, 'portada.html', context)
-
+   """ recetas_con_max_duracion =get_list_or_404( Receta.objects.values('tipo').annotate(max_duracion=Max('duracion')))"""
+   """recetas_con_max_duracion =get_list_or_404(Receta.objects.order_by('duracion'))"""
+   context = {'lista_recetas_portada': recetas_con_max_duracion}
+   return render(request, 'portada.html', context)
 
 
 #devuelve el listado de recetas
