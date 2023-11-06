@@ -6,13 +6,16 @@ def index(request):
 from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Receta, TipoPlato, Ingrediente
+from django.db.models import Max
 
 #devuelve recetas por cada tipo y en orden de duracion
 def index_portada(request):
-	
-    recetas = Receta.objects.values('tipo').order_by('duracion')
+
+    recetas = Receta.objects.values('tipo').annotate(max_duracion=Max('duracion'))
     context = {'lista_recetas_portada': recetas}
     return render(request, 'portada.html', context)
+
+
 
 #devuelve el listado de recetas
 def index_recetas(request):
@@ -63,7 +66,5 @@ def show_tipo(request, tipo_id):
 """	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""
 """return HttpResponse(output)"""
 
-from django.db.models import Max
-recetas_con_max_duracion = Receta.objects.values('tipo').annotate(max_duracion=Max('duracion'))
 
 

@@ -5,14 +5,11 @@
 {% block contenido %}
 <h2>Recipes Store</h2>
 <ul>
-    {% for receta in lista_recetas_portada %}
-        <li>
-            <h3>{{ receta.tipoplato }}</h3>
-            <p>Receta: {{ receta.nombre }}</p>
-            <p>Duración: {{ receta.duracion }} minutos</p>
-        </li>
+    {% for receta in recetas_con_max_duracion %}
+        <li>Tipo: {{ receta.tipo }}</li>
+        <li>Receta con mayor duración: {{ receta.max_duracion }}</li>
     {% endfor %}
-</ul>
+    </ul>
 <br><br>
 <a href="/appEmpresaRecetas/receta/">Acceder a todas las recetas disponibles</a><br><br>
 <a href="/appEmpresaRecetas/ingrediente/">Acceder a todos los ingredientes disponibles</a><br><br>
