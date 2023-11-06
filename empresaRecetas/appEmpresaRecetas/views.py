@@ -39,9 +39,10 @@ def index_tipos(request):
 #devuelve los datos de una receta
 def show_receta(request, receta_id):
 	receta = get_list_or_404(Receta.objects.get(pk=receta_id))
+	ingredientes = receta.ingredientes.all()
 	"""output = f'Detalles de la receta: {receta.id},{receta.nombre}, {receta.ingredientes}, {receta.duracion}, {receta.tipo}'"""
 	"""return HttpResponse(output)"""
-	context = {'receta': receta }
+	context = {'receta': receta, 'ingredientes': ingredientes }
 	return render(request, 'receta.html', context)
 
 #devuelve los detalles de un ingrediente
@@ -62,8 +63,6 @@ def show_tipo(request, tipo_id):
 """	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""
 """return HttpResponse(output)"""
 
-
-#nose...
 
 #devuelve los ingredientes de una receta
 def index_ingredientes_r(request, receta_id):
