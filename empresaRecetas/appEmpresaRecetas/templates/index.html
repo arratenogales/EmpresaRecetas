@@ -1,9 +1,16 @@
+
 {% extends "base.html" %}
 
 {% block titulo %}Listado de recetas{% endblock %}
 
 {% block contenido %}
 <h2>Listado de recetas</h2>
+<ul>
+	{% for receta in recetas_con_max_duracion %}
+		<li>Tipo: {{ receta.tipo }}</li>
+		<li>Receta con mayor duración: {{ receta.max_duracion }}</li>
+	{% endfor %}
+</ul>
 {% if lista_recetas %}
 	<ul>
 	{% for d in lista_recetas %}
@@ -12,6 +19,7 @@
 		</li>
 	{% endfor %}
 	</ul>
+	
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}

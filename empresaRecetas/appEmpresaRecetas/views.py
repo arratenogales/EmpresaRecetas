@@ -63,5 +63,7 @@ def show_tipo(request, tipo_id):
 """	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""
 """return HttpResponse(output)"""
 
+from django.db.models import Max
+recetas_con_max_duracion = Receta.objects.values('tipo').annotate(max_duracion=Max('duracion'))
 
 
