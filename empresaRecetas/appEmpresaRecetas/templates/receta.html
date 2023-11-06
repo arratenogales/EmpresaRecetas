@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %} Detalles de la receta {% endblock %}
+
+{% block contenido %}
+<h2>Datos de la receta</h2>
+
+{% if receta %}
+    <ul>
+        <li>
+            {{ receta.nombre}}
+        </li>
+        <li>
+            {{ receta.duracion}}
+        </li>
+        <li>
+            {{ receta.tipo}}
+        </li>
+    </ul>
+    <h3>Lista de ingredientes</h3>
+	{% if ingrediente %}
+		<ol>
+		{% for i in ingredientes %}
+			<li><a href="/appEmpresaRecetas/ingrediente/{{ i.id }}">{{ i.nombre}}</a></li>
+		{% endfor %}
+		</ol>
+	{% endif %}
+
+{% else %}
+    <p>No existe esta receta.</p>
+{% endif %}
+
+{% endblock %}

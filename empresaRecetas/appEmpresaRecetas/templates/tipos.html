@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block titulo %}Listado de tipos{% endblock %}
+
+{% block contenido %}
+<h2>Listado de tipos</h2>
+{% if lista_tipos %}
+	<ul>
+	{% for d in lista_tipos %}
+		<li>
+		    <a href="/appEmpresaRecetas/tipo/{{ d.id }}">{{ d.nombre}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+<p>No hay tipos.</p>
+{% endif %}
+{% endblock %}
