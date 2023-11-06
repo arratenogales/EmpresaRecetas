@@ -4,21 +4,21 @@
 {% if ingrediente %}
     <ul>
         <li>
-            {{ ingrediente.nombre}}
+            Nombre: {{ ingrediente.nombre}}
         </li>
         <li>
-            {{ ingrediente.kcal}}
+            Kcal: {{ ingrediente.kcal}}
         </li>
         <li>
-            {{ ingrediente.grasas}}
+            Grasas: {{ ingrediente.grasas}}
         </li>
         
     </ul>
     <h3>Lista de recetas de este ingrediente</h3>
-	{% if receta %}
+	{% if recetas %}
 		<ol>
-		{% for d in receta %}
-			<li><a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a></li>
+		{% for d in recetas %}
+			<li><a href="/appEmpresaRecetas/receta/{{ d.id }}/">{{ d.nombre}}</a></li>
 		{% endfor %}
 		</ol>
 	{% endif %}

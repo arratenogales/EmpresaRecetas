@@ -38,7 +38,7 @@ def index_tipos(request):
 
 #devuelve los datos de una receta
 def show_receta(request, receta_id):
-	receta = get_list_or_404(Receta.objects.get(pk=receta_id))
+	receta = get_object_or_404(Receta, pk=receta_id)
 	ingredientes = receta.ingredientes.all()
 	"""output = f'Detalles de la receta: {receta.id},{receta.nombre}, {receta.ingredientes}, {receta.duracion}, {receta.tipo}'"""
 	"""return HttpResponse(output)"""
@@ -47,8 +47,8 @@ def show_receta(request, receta_id):
 
 #devuelve los detalles de un ingrediente
 def show_ingrediente(request, ingrediente_id):
-	ingrediente = get_list_or_404(Ingrediente.objects.get(pk=ingrediente_id))
-	recetas =  ingrediente.recetas_set.all()
+	ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
+	recetas =  Receta.objects.filter(ingredientes=ingrediente)
 	context = { 'ingrediente': ingrediente, 'recetas' : recetas }
 	return render(request, 'ingrediente.html', context) 
 """	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'"""
@@ -56,38 +56,12 @@ def show_ingrediente(request, ingrediente_id):
 
 #devuelve los detalles de un tipo 
 def show_tipo(request, tipo_id):
-	tipo = get_list_or_404(TipoPlato.objects.get(pk=tipo_id))
-	recetas =  tipo.recetas_set.all()
+	tipo = get_object_or_404(TipoPlato, pk=tipo_id)
+	recetas =  Receta.objects.filter(tipo=tipo)
 	context = { 'recetas': recetas, 'tipo' : tipo }
 	return render(request, 'tipo.html', context)  
 """	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""
 """return HttpResponse(output)"""
 
 
-#devuelve los ingredientes de una receta
-def index_ingredientes_r(request, receta_id):
-	receta = get_list_or_404(Receta.objects.get(pk=receta_id))
-	ingredientes =  receta.ingrediente_set.all()
-	"""output = ', '.join([e.nombre for e in receta.ingredientes_set.all()])"""
-	"""return HttpResponse(output)"""
-	context = {'receta': receta, 'ingredientes' : ingredientes }
-	return render(request, 'ingredientes_r.html', context)
-
-#devuelve las recetas de un tipo
-def index_recetas_t(request, tipo_id):
-	tipo = get_list_or_404(TipoPlato.objects.get(pk=tipo_id))
-	recetas =  tipo.receta_set.all()
-	"""output = ', '.join([e.nombre for e in tipo.recetas_set.all()])"""
-	"""return HttpResponse(output)"""
-	context = {'tipo': tipo, 'recetas' : recetas }
-	return render(request, 'recetas_t.html', context)
-
-#devuelve las recetas de un ingrediente
-def index_recetas_i(request, ingrediente_id):
-	ingrediente = get_list_or_404(Ingrediente.objects.get(pk=ingrediente_id))
-	recetas =  ingrediente.receta_set.all()
-	"""output = ', '.join([e.nombre for e in ingrediente.receta_set.all()])"""
-	"""return HttpResponse(output)"""
-	context = {'ingrediente': ingrediente, 'recetas' : recetas }
-	return render(request, 'recetas_i.html', context)
 

@@ -9,9 +9,9 @@
         
     </ul>
     <h3>Lista de recetas de este tipo</h3>
-	{% if receta %}
+	{% if recetas %}
 		<ol>
-		{% for d in receta %}
+		{% for d in recetas %}
 			<li><a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a></li>
 		{% endfor %}
 		</ol>

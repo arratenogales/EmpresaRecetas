@@ -8,17 +8,17 @@
 {% if receta %}
     <ul>
         <li>
-            {{ receta.nombre}}
+           Nombre: {{ receta.nombre}}
         </li>
         <li>
-            {{ receta.duracion}}
+            Duracion: {{ receta.duracion}}
         </li>
         <li>
-            {{ receta.tipo}}
+           Tipo de receta: {{ receta.tipo}}
         </li>
     </ul>
     <h3>Lista de ingredientes</h3>
-	{% if ingrediente %}
+	{% if ingredientes %}
 		<ol>
 		{% for i in ingredientes %}
 			<li><a href="/appEmpresaRecetas/ingrediente/{{ i.id }}">{{ i.nombre}}</a></li>

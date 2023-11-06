@@ -12,12 +12,6 @@ urlpatterns = [
     path('receta/<int:receta_id>/', views.show_receta, name='receta'),
     path('ingrediente/<int:ingrediente_id>/', views.show_ingrediente, name='ingrediente'),
     path('tipo/<int:tipo_id>/', views.show_tipo, name='tipo'),
-    
-    #ingredientes de una receta
-    path('receta/<int:receta_id>/ingredientes', views.index_ingredientes_r, name='ingredientes receta'),
-    #recetas de un ingrediente
-    path('ingrediente/<int:ingrediente_id>/recetas', views.index_recetas_i, name='recetas ingrediente'),
-    #recetas de un tipo
-    path('tipo/<int:tipo_id>/recetas', views.index_recetas_t, name='recetas tipo')
+  
 
 ]
