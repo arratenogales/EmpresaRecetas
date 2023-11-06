@@ -45,7 +45,7 @@ def show_receta(request, receta_id):
 	context = {'receta': receta, 'ingredientes': ingredientes }
 	return render(request, 'receta.html', context)
 
-#devuelve los detalles de un ingrediente
+#devuelve los detalles de un ingrediente 
 def show_ingrediente(request, ingrediente_id):
 	ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
 	recetas =  Receta.objects.filter(ingredientes=ingrediente)
