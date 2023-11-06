@@ -1,0 +1,19 @@
+div{
+    margin:0 auto;
+    padding: 10px;
+    width: 75%;
+    background-color: white;
+}
+body{
+    background-color: FloralWhite;
+}
+
+h1 {
+	color: dimgrey;
+    font-size: 40px;	
+}
+p{
+    text-align: justify;
+    line-height: 120%;
+}
+
