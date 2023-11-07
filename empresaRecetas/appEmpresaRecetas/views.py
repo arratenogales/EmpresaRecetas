@@ -11,11 +11,22 @@ def index(request):
 """recetas_con_max_duracion =get_list_or_404(Receta.objects.order_by('duracion'))"""
    
 #devuelve recetas por cada tipo y en orden de duracion
+#def index_portada(request):
+#    recetas_con_max_duracion =get_list_or_404( Receta.objects.values('tipo').annotate(max_duracion=Max('duracion')))
+#    context = {'lista_recetas_portada': recetas_con_max_duracion}
+#    return render(request, 'portada.html', context)
+
 def index_portada(request):
-    recetas_con_max_duracion =get_list_or_404( Receta.objects.values('tipo').annotate(max_duracion=Max('duracion')))
+    tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
+    recetas_con_max_duracion = []
+
+    for tipo in tipos_recetas:
+        receta_max_duracion = Receta.objects.filter(tipo=tipo).order_by('-duracion').first()
+        if receta_max_duracion:
+            recetas_con_max_duracion.append(receta_max_duracion)
+
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
-
 
 #devuelve el listado de recetas
 def index_recetas(request):

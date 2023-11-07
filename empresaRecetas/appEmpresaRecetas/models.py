@@ -15,9 +15,8 @@ class TipoPlato(models.Model):
  
 class Receta(models.Model):
     tipo = models.ForeignKey(TipoPlato, on_delete=models.CASCADE)
-    #una receta tiene varios ingredientes)
-    ingredientes = models.ManyToManyField(Ingrediente)
-    nombre = models.CharField(max_length=40)
+    ingredientes = models.ManyToManyField(Ingrediente) #muchos ingredientes
+    nombre = models.CharField(max_length=70)
     duracion = models.IntegerField()
     def __str__(self):
         return self.nombre

@@ -6,9 +6,10 @@
 <h2>Recipes Store</h2>
 <ul>
     {% for receta in lista_recetas_portada %}
-        <li>Tipo: {{ receta.tipo }}</li>
+        <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
         <li>Nombre de la receta con mayor duración: {{ receta.nombre }}</li>
-        <li>Receta con mayor duración: {{ receta.max_duracion }}</li>
+        <li>Receta con mayor duración: {{ receta.duracion }} minutos.</li>
+        <br>
     {% endfor %}
 </ul>
 <br><br>
