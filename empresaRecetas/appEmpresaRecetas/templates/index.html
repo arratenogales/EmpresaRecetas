@@ -1,5 +1,6 @@
 
 {% extends "base.html" %}
+{% load static %}
 
 {% block titulo %}Listado de recetas{% endblock %}
 
@@ -10,7 +11,7 @@
 	<ul>
 	{% for d in lista_recetas %}
 		<li>
-		    <a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a>
+		    <a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}} <img src="{% static 'img/d.imagen.name' %}" /></a>
 		</li>
 	{% endfor %}
 	</ul>
