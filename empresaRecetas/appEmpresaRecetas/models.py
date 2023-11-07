@@ -18,5 +18,6 @@ class Receta(models.Model):
     ingredientes = models.ManyToManyField(Ingrediente) #muchos ingredientes
     nombre = models.CharField(max_length=70)
     duracion = models.IntegerField()
+    imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     def __str__(self):
         return self.nombre
