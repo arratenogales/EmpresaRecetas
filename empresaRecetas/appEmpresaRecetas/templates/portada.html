@@ -1,14 +1,17 @@
 {% extends "base.html" %}
-
 {% block titulo %}Portada de Recipes Store{% endblock %}
-
 {% block contenido %}
-<img src="recetas.jpg"  alt="imagen de collab de recetas">
+{% load static %}
+<img alt="{{ receta.nombre }}" src="../img/recetas.jpg" />
+
+
 <h2>Recipes Store</h2>
 <main>
     {% for receta in lista_recetas_portada %}
     <ul>
         <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
+        
+        <li>Imagen de la receta: <img alt="{{ receta.nombre }}" src="{% static receta.imagen.name %}" /></li>
     </ul>
         <table>
             <tr>
