@@ -2,7 +2,7 @@
 {% block titulo %}Portada de Recipes Store{% endblock %}
 {% block contenido %}
 {% load static %}
-<img alt="{{ receta.nombre }}" src="../img/recetas.jpg" />
+
 
 
 <h2>Recipes Store</h2>
@@ -16,7 +16,8 @@
     <ul>
         <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
         
-        <li>Imagen de la receta: <img alt="{{ receta.nombre }}" src="{% static 'img/recetas.jpg' %}" /></li>
+        <li><img alt="{{ entidad.imagen.name }}" src="{% static entidad.imagen.name %}" />
+</li>
     </ul>
         <table>
             <tr>
