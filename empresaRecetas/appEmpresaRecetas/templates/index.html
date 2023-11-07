@@ -11,7 +11,11 @@
 	<ul>
 	{% for d in lista_recetas %}
 		<li>
-		    <a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}} <img src="{% static 'img/d.imagen.name' %}" /></a>
+		    <a href="% url 'show_receta' d.id%">{{ d.nombre}}</a> 
+			{% with "images/"|add:d.nombre|add:".jpg" as imagen %}
+        	<li><img src="{% static imagen %}" alt=""></li>
+        	{% endwith %}
+			<img alt = "" src="{% static d.imagen.name %}"/> 
 		</li>
 	{% endfor %}
 	</ul>

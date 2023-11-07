@@ -15,8 +15,9 @@
     {% for receta in lista_recetas_portada %}
     <ul>
         <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
-        
-        <li><img alt="{{ entidad.imagen.name }}" src="{% static entidad.imagen.name %}"/></li>
+        {% with "images/"|add:receta.nombre|add:".jpg" as imagen %}
+        <li><img src="{% static imagen %}" alt="Imagen Receta"></li>
+        {% endwith %}
 </li>
     </ul>
         <table>
