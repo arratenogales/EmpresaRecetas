@@ -16,17 +16,17 @@
     <ul>
         <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
         {% with "images/"|add:receta.nombre|add:".jpg" as imagen %}
-        <li><img src="{% static imagen %}" alt="Imagen Receta"></li>
+        <img src="{% static imagen %}" alt="Imagen Receta">
         {% endwith %}
 </li>
     </ul>
         <table>
             <tr>
-                <td>Nombre de la receta:</td>
+                <td><u>Nombre:</u></td>
                 <td>{{ receta.nombre }}</td>
             </tr>
             <tr>
-                <td>Duracion:</td>
+                <td><u>Duracion:</u></td>
                 <td> {{ receta.duracion }} minutos</td>
             </tr>
         </table>

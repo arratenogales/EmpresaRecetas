@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 {% load static %}
-<link rel="stylesheet" href="{% static '../static/css/styles.css' %}">
-{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="shortcut icon" href="{static 'images/favicon.ico' %}" type="image/x-icon" >
+
+
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="style.css">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
     </head>
     <body>
@@ -22,10 +23,10 @@
         </header> 
             {% block contenido %}{% endblock %}
             <footer>
-                <p><strong>Contacta con nosotros.</strong></p>
-                <p>Instagram: recipestore</p>
-                <p>Gmail: recipestore@gmail.com</p>
-                <p>Telefono: 787888886</p>
+                <p><strong>Contacta con nosotros</strong></p>
+                <p><u>Instagram:</u> recipestore</p>
+                <p><u>Gmail:</u> recipestore@gmail.com</p>
+                <p><u>Telefono:</u> 787 888 886</p>
             </footer>
         </div>
     </body>
