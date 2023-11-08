@@ -1,17 +1,21 @@
-
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
-
 {% block titulo %}Listado de recetas{% endblock %}
-
 {% block contenido %}
-<h2>Listado de recetas</h2>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+    <title>Recetas</title>
+</head>
+
 <section>
+	<h2>Listado de recetas</h2>
 {% if lista_recetas %}
+    {% for d in lista_recetas %}
 	<ul>
-	{% for d in lista_recetas %}
 		<li>
-		    
 			<a href="/appEmpresaRecetas/receta/{{ d.id }}/">{{ d.nombre}}</a>
 			<br>
 			{% with "images/"|add:d.nombre|add:".jpg" as imagen %}
@@ -19,11 +23,13 @@
         	{% endwith %}
 			
 		</li>
-	{% endfor %}
+	
 	</ul>
+	{% endfor %}
 	
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}
 </section>
 {% endblock %}
+</html>
