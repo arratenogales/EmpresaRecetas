@@ -11,13 +11,10 @@
         Creemos que la cocina es una forma de expresión y creatividad, y estamos aquí para guiarte en cada paso del camino.</p>
 
     <h3>A continuacion tres de nuestras recetas que menor tiempo conllevan.</h3>
-
+    <section>
     {% for receta in lista_recetas_portada %}
     <ul>
         <li>Tipo: <b>{{receta.tipo.nombre }}</b></li>
-        {% with "images/"|add:receta.nombre|add:".jpg" as imagen %}
-        <img src="{% static imagen %}" alt="Imagen Receta">
-        {% endwith %}
 </li>
     </ul>
         <table>
@@ -29,9 +26,16 @@
                 <td><u>Duracion:</u></td>
                 <td> {{ receta.duracion }} minutos</td>
             </tr>
+            <tr>
+                <td colspan="2">{% with "images/"|add:receta.nombre|add:".jpg" as imagen %}
+                    <img src="{% static imagen %}" alt="Imagen Receta">
+                    {% endwith %}</td>
+            </tr>
         </table>
+        
         <br>
     {% endfor %}
+    </section>
 
 </main>
 <br><br>
