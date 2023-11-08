@@ -30,7 +30,7 @@ h3{
 header{
     background-color: #ECFBFA ;
     text-align: center;
-    background-image: url("{% static 'images/portada.jpg' %}");
+    background-image: url("../images/portada.jpg");
     background-attachment: fixed;            
 }
 
