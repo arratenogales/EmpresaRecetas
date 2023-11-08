@@ -6,12 +6,14 @@
 
 {% block contenido %}
 <h2>Listado de recetas</h2>
-
+<section>
 {% if lista_recetas %}
 	<ul>
 	{% for d in lista_recetas %}
 		<li>
-		    <a href="% url 'show_receta' d.id%">{{ d.nombre}}</a> 
+		    
+			<a href="/appEmpresaRecetas/receta/{{ d.id }}/">{{ d.nombre}}</a>
+			<br>
 			{% with "images/"|add:d.nombre|add:".jpg" as imagen %}
         	<img src="{% static imagen %}" alt="">
         	{% endwith %}
@@ -23,4 +25,5 @@
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}
+</section>
 {% endblock %}

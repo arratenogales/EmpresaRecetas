@@ -25,6 +25,7 @@ h2{
 }
 
 h3{
+    border-top: 2px dotted #107b6b;
     text-align: center;
 }
 header{

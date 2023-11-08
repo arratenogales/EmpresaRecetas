@@ -18,6 +18,7 @@
         </li>
     </ul>
     <h3>Lista de ingredientes</h3>
+    <section>
 	{% if ingredientes %}
 		<ol>
 		{% for i in ingredientes %}
@@ -25,9 +26,10 @@
 		{% endfor %}
 		</ol>
 	{% endif %}
-
+</section>
 {% else %}
     <p>No existe esta receta.</p>
 {% endif %}
+
 
 {% endblock %}

@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 {% block contenido %}
 <h2>Datos del tipo</h2>
 
@@ -9,6 +10,7 @@
         
     </ul>
     <h3>Lista de recetas de este tipo</h3>
+    <section>
 	{% if recetas %}
 		<ol>
 		{% for d in recetas %}
@@ -16,7 +18,7 @@
 		{% endfor %}
 		</ol>
 	{% endif %}
-
+    </section>
 {% else %}
     <p>No existe este tipo.</p>
 {% endif %}
