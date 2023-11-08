@@ -3,9 +3,10 @@
 {% block titulo %} Detalles de la receta {% endblock %}
 
 {% block contenido %}
-<h2>Datos de la receta</h2>
-
 {% if receta %}
+<h2>Datos de la receta de  {{ receta.nombre}} </h2>
+
+
     <ul>
         <li>
            Nombre: {{ receta.nombre}}
