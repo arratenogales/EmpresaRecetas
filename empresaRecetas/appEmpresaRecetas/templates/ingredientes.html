@@ -1,17 +1,15 @@
 {% extends "base.html" %}
-
 {% block titulo %}Listado de ingredientes{% endblock %}
-
 {% block contenido %}
 <h2>Listado de ingredientes</h2>
 {% if lista_ingredientes %}
+    {% for d in lista_ingredientes %}
 	<ul>
-	{% for d in lista_ingredientes %}
 		<li>
 		    <a href="/appEmpresaRecetas/ingrediente/{{ d.id }}">{{ d.nombre}}</a>
 		</li>
-	{% endfor %}
 	</ul>
+	{% endfor %}
 {% else %}
 <p>No hay ingredientes.</p>
 {% endif %}

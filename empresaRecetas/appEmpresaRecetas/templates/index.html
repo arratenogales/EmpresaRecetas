@@ -1,15 +1,8 @@
-<!DOCTYPE html>
+
 {% extends "base.html" %}
 {% load static %}
 {% block titulo %}Listado de recetas{% endblock %}
 {% block contenido %}
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-    <title>Recetas</title>
-</head>
-
 <section>
 	<h2>Listado de recetas</h2>
 {% if lista_recetas %}
@@ -23,13 +16,11 @@
         	{% endwith %}
 			
 		</li>
-	
 	</ul>
 	{% endfor %}
-	
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}
 </section>
 {% endblock %}
-</html>
+

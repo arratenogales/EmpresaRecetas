@@ -9,18 +9,22 @@
         </li>
         
     </ul>
-    <h3>Lista de recetas de este tipo</h3>
+    
     <section>
+     <h3>Lista de recetas de este tipo</h3>
 	{% if recetas %}
-		<ol>
-		{% for d in recetas %}
+    {% for d in recetas %}
+		<ul>
+		
 			<li><a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a></li>
-		{% endfor %}
-		</ol>
+		
+		</ul>
+        {% endfor %}
 	{% endif %}
-    </section>
+    
 {% else %}
     <p>No existe este tipo.</p>
 {% endif %}
+</section>
 
 {% endblock %}
