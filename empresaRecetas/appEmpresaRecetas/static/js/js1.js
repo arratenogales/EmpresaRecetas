@@ -1,0 +1,1 @@
+document.body.insertAdjacentHTML('beforebegin','<p>Primer párrafo</p>');
