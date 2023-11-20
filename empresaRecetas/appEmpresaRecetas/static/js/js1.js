@@ -1,1 +1,4 @@
-document.body.insertAdjacentHTML('beforebegin','<p>Primer párrafo</p>');
+
+document.addEventListener("DOMContentLoaded", function() {
+    alert("Bienvenido a nuestra web Gestor de Recetas");
+});

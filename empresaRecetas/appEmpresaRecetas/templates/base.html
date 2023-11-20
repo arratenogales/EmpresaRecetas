@@ -5,18 +5,29 @@
         <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <script src="{% static 'js/js1.js' %}"></script>
+        <script src="{% static 'js/js1.js' %}"></script> 
     </head>
     <body>
         <div id="content">
         <header> 
-            <nav><p><a href="/appEmpresaRecetas">Indice</a>
-                <a href="/appEmpresaRecetas/receta/">Recetas</a>
-                <a href="/appEmpresaRecetas/ingrediente/">Ingredientes</a>
-                <a href="/appEmpresaRecetas/tipo/">Tipos de platos</a></p>
+            <nav><p><a href="">Indice</a>
+                <a href="receta/">Recetas</a>
+                <a href="/ingrediente/">Ingredientes</a>
+                <a href="/tipo/">Tipos de platos</a></p>
             </nav>
-        <h1 >GESTOR DE RECETAS</h1>
+        
+        <div class="mg-main-banner-section">
+            
+                        
+                         <h1 >GESTOR DE RECETAS</h1>
+                        <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+                        
+                   
+            
+        </div>
         <br>
+       
+        
         </header> 
             {% block contenido %}{% endblock %}
             <footer>
@@ -27,6 +38,6 @@
             </footer>
         </div>
     </body>
-    
+
 </html>
 
