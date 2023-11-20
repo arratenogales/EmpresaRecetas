@@ -15,11 +15,17 @@
         <header> 
             <img src="{% static 'images/portada.jpg' %}" alt="IMAGEN">
             <nav><p><a href="{% url 'portada' %}">Indice</a>
-                <a href="/appEmpresaRecetas/receta/">Recetas</a>
-                <a href="/appEmpresaRecetas/ingrediente/">Ingredientes</a>
-                <a href="/appEmpresaRecetas/tipo/">Tipos de platos</a></p>
+                <a href="{% url 'index_recetas' %}">Recetas</a>
+                <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
+                <a href="{% url 'index_tipo' %}">Tipos de platos</a></p>
             </nav>
         <h1>GESTOR DE RECETAS</h1>
+
+        <div class="mg-main-banner-section">
+
+            <h1 >GESTOR DE RECETAS</h1>
+                        <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+        
         <br>
         </header> 
             {% block contenido %}{% endblock %}
