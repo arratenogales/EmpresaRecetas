@@ -2,29 +2,32 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <link rel="shortcut icon" href="{static 'images/favicon.ico' %}" type="image/x-icon" >
-
+<script src="{% static 'js/js1.js' %}"></script>
+<script src="{% static 'js/js1.js' %}"></script> 
 
 <html lang="en">
     <head>
+        <div class="mg-main-banner-section">
+
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
+
     </head>
     <body>
         
 
         <div id="content">
         <header> 
+            <h1>GESTOR DE RECETAS</h1>
+            <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+    
+    
             <img src="{% static 'images/portada.jpg' %}" alt="IMAGEN">
             <nav><p><a href="{% url 'portada' %}">Indice</a>
                 <a href="{% url 'index_recetas' %}">Recetas</a>
                 <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
                 <a href="{% url 'index_tipo' %}">Tipos de platos</a></p>
             </nav>
-        <h1>GESTOR DE RECETAS</h1>
-
-        <div class="mg-main-banner-section">
-
-            <h1 >GESTOR DE RECETAS</h1>
-                        <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+       
         
         <br>
         </header> 

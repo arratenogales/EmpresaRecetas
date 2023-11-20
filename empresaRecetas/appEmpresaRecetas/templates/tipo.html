@@ -16,7 +16,7 @@
     {% for d in recetas %}
 		<ul>
 		
-			<li><a href="/appEmpresaRecetas/receta/{{ d.id }}">{{ d.nombre}}</a></li>
+			<li><a href="{% url 'tipo' tipo_id = d.id %}">{{ d.nombre}}</a></li>
 		
 		</ul>
         {% endfor %}
