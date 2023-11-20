@@ -1,43 +1,39 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="es">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="shortcut icon" href="{static 'images/favicon.ico' %}" type="image/x-icon" >
+
+
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        <script src="{% static 'js/js1.js' %}"></script> 
     </head>
     <body>
+        
+
         <div id="content">
         <header> 
-            <nav><p><a href="">Indice</a>
-                <a href="receta/">Recetas</a>
-                <a href="/ingrediente/">Ingredientes</a>
-                <a href="/tipo/">Tipos de platos</a></p>
+            <img src="{% static 'images/portada.jpg' %}" alt="IMAGEN">
+            <nav><p><a href="{% url 'portada' %}">Indice</a>
+                <a href="/appEmpresaRecetas/receta/">Recetas</a>
+                <a href="/appEmpresaRecetas/ingrediente/">Ingredientes</a>
+                <a href="/appEmpresaRecetas/tipo/">Tipos de platos</a></p>
             </nav>
-        
-        <div class="mg-main-banner-section">
-            
-                        
-                         <h1 >GESTOR DE RECETAS</h1>
-                        <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
-                        
-                   
-            
-        </div>
+        <h1>GESTOR DE RECETAS</h1>
         <br>
-       
-        
         </header> 
             {% block contenido %}{% endblock %}
             <footer>
-                <p><strong>Contacta con nosotros.</strong></p>
-                <p>Instagram: recipestore</p>
-                <p>Gmail: recipestore@gmail.com</p>
-                <p>Telefono: 787888886</p>
+                <p><strong>Contacta con nosotros</strong></p>
+                <p><u>Instagram:</u> recipestore</p>
+                <p><u>Gmail:</u> recipestore@gmail.com</p>
+                <p><u>Telefono:</u> 787 888 886</p>
             </footer>
         </div>
-    </body>
 
+        <script> console.log("Hola") </script>
+
+    </body>
+    
 </html>
 
