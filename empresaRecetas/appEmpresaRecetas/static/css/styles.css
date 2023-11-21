@@ -132,6 +132,7 @@ a:hover {
 
 ul {
 	line-height: 3em;
+    list-style-type: none;
 }
 
 img{
@@ -185,15 +186,14 @@ footer {
     
 }
 
-.receta-section2-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; /* Ajusta según tus necesidades, para agregar espacio entre los elementos */
-}
+
 
 .receta-section2 {
-    width: 30%;
-    margin-left: 10%;
-    margin-right: 10%;
+    display: inline-block;
+    
+}
+
+.lista-rec{
+    display: inline-block;
     
 }

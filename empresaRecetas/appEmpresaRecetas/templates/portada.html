@@ -15,11 +15,11 @@
     
         <h3>A continuacion tres de nuestras recetas que menor tiempo conllevan.</h3>
         
-    <div class="receta-section2-container">
-    <div class="receta-section2">
+    
+    
     {% for receta in lista_recetas_portada %}
   
-    
+    <div class="receta-section2">
     <ul >
         <li id="tipoo">Tipo: <b>{{receta.tipo.nombre }}</b></li>
 
@@ -43,13 +43,13 @@
         <br>
 
         <a href="{% url 'receta' receta_id=receta.id %}">Ver detalles</a>
-    
+    </div>
     {% endfor %}
     
     
-    </div>
+    
    
-    <div class="receta-section2">
+    <div class="receta-section3">
         <br>
     <p>La cocina es el corazón de cualquier hogar, un espacio donde los aromas exquisitos y los sabores cautivadores se entrelazan para crear experiencias inolvidables. Es más que un lugar para preparar alimentos; es el escenario donde se fusionan la creatividad, la tradición y el amor por la buena comida.
     </p> 
@@ -64,7 +64,7 @@
 </p> 
 <p> En resumen, la cocina y las recetas son mucho más que simples actos de preparación de alimentos; son expresiones artísticas que alimentan tanto el cuerpo como el espíritu. Nos invitan a disfrutar de la vida a través de los sentidos, convirtiendo cada comida en una celebración de la creatividad y la conexión humana.</p>
     </div>
-</div>
+
 </main>
 <br><br>
 

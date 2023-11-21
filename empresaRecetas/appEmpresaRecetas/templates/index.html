@@ -3,13 +3,17 @@
 {% load static %}
 {% block titulo %}Listado de recetas{% endblock %}
 {% block contenido %}
+<main>
 <section>
+	
 	<h2>Listado de recetas</h2>
 {% if lista_recetas %}
+<div class="lista-rec-c">
     {% for d in lista_recetas %}
+	<div class="lista-rec">
 	<ul>
 		<li>
-			<a href="{% url 'receta' receta_id=d.id  %}">{{ d.nombre}}</a>
+			<a href="{% url 'receta' receta_id=d.id %}">{{ d.nombre}}</a>
 			<br>
 			{% with "images/"|add:d.nombre|add:".jpg" as imagen %}
         	<img src="{% static imagen %}" alt="">
@@ -17,10 +21,13 @@
 			
 		</li>
 	</ul>
+    </div>
 	{% endfor %}
+</div>
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}
 </section>
+</main>
 {% endblock %}
 
