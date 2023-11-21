@@ -15,13 +15,13 @@
      <h3>Lista de recetas de este tipo</h3>
 	{% if recetas %}
     {% for d in recetas %}
-    <div class="lista-rec">
+    
 		<ul>
 		
 			<li><a href="{% url 'receta' receta_id=d.id %}">{{ d.nombre}}</a></li>
 		
 		</ul>
-    </div>
+    
         {% endfor %}
 	{% endif %}
     

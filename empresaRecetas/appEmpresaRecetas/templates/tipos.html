@@ -3,9 +3,12 @@
 {% block titulo %}Listado de tipos{% endblock %}
 
 {% block contenido %}
+<main>
 <h2>Listado de tipos</h2>
+</main>
 {% if lista_tipos %}
 {% for d in lista_tipos %}
+<div class="lista-rec">
 	<ul>
 	
 		<li>
@@ -13,6 +16,7 @@
 		</li>
 	
 	</ul>
+</div>
 	{% endfor %}
 {% else %}
 <p>No hay tipos.</p>
