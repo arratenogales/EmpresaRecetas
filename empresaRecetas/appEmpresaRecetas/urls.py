@@ -13,6 +13,6 @@ urlpatterns = [
     path('ingrediente/<int:ingrediente_id>/', views.show_ingrediente, name='ingrediente'),
     path('tipo/<int:tipo_id>/', views.show_tipo, name='tipo'),
   
-    path('registrar/', views.show_formulario, name = 'registrar'),
-    path('usuario/', views.post_usuario_form, name = 'post_usuario_form')
+    path('registrar/', views.show_formulario, name='registrar'),
+    path('usuario/', views.post_usuario_form, name='post_usuario_form')
 ]

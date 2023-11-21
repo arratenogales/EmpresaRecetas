@@ -9,7 +9,7 @@ def index(request):
     return HttpResponse("Recetas")
 
 
-from empresaRecetas.appEmpresaRecetas.forms import UsuarioForm
+from .forms import UsuarioForm
 
 
 
@@ -22,10 +22,10 @@ def show_formulario(request):
 def post_usuario_form(request): 
     form = UsuarioForm(request.POST)
     if form.is_valid():
+        form.save() 
         nombre = form.cleaned_data['nombre']
         apellidos = form.cleaned_data['apellidos']        
-        return HttpResponse(f" El nombre es: {nombre} {apellidos}")
-
+        return HttpResponse(f"Registro exitoso. Bienvenid@ {nombre} {apellidos}")
 
 
 def index_portada(request):

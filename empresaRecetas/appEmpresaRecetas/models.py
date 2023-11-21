@@ -21,3 +21,10 @@ class Receta(models.Model):
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     def __str__(self):
         return self.nombre
+    
+class Pregunta(models.Model):
+    fecha = models.DateTimeField('Fecha de publicación')
+    pregunta = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.pregunta    

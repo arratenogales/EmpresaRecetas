@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var botonForm = document.getElementById("irFormulario");
 
     botonForm.addEventListener("click", function() {
-        window.location.href = "{% url 'registrar' %}";
+        window.location.href = "/registrar/";
     });
 });
+
