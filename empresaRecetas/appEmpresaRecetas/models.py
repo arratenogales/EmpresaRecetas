@@ -35,4 +35,16 @@ class Author(models.Model):
     pais = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre   
+        return self.nombre 
+
+class Editor(models.Model):
+    nombre = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nombre  
+    
+class Reader(models.Model):
+    nombre = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nombre
