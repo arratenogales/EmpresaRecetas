@@ -27,4 +27,12 @@ class Pregunta(models.Model):
     pregunta = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.pregunta    
+        return self.pregunta 
+
+class Author(models.Model):
+    nombre = models.CharField(max_length=255)
+    fecha_nac = models.DateField()
+    pais = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre   
