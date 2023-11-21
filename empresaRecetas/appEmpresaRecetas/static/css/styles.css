@@ -71,9 +71,9 @@ header{
     width: 70%;
     background-size: cover;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    margin: 0 auto; /* Esto centra el bloque horizontalmente */
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto; 
 }
 
 
@@ -196,4 +196,11 @@ footer {
 .lista-rec{
     display: inline-block;
     
+}
+.ing{
+   
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto; 
 }

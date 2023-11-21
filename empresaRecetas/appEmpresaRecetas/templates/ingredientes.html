@@ -1,14 +1,22 @@
 {% extends "base.html" %}
 {% block titulo %}Listado de ingredientes{% endblock %}
 {% block contenido %}
-<h2>Listado de ingredientes</h2>
+{% load static %}
+<main>
+	<div class="ing">
+<h2>Listado de ingredientes </h2>
+<img src="{% static 'images/ing.jpg' %}" alt="IMAGEN ingredientes">
+</div>
+</main>
 {% if lista_ingredientes %}
     {% for d in lista_ingredientes %}
+	<div class="lista-rec">
 	<ul>
 		<li>
-		    <a href="{% url 'ingrediente' ingrediente_id=d.id %}">{{ d.nombre}}</a>
+		    <a href="/appEmpresaRecetas/ingrediente/{{ d.id }}">{{ d.nombre}}</a>
 		</li>
 	</ul>
+    </div>
 	{% endfor %}
 {% else %}
 <p>No hay ingredientes.</p>
