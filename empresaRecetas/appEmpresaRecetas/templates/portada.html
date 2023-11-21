@@ -5,6 +5,7 @@
 
 
 
+
 <h2>Recipes Store</h2>
 <main>
     <p>En Recipes Store, valoramos la calidad, la frescura y la simplicidad en la cocina. Todas nuestras recetas son seleccionadas cuidadosamente, probadas y presentadas de manera clara y concisa.
@@ -13,6 +14,8 @@
     
     <section>
         <h3>A continuacion tres de nuestras recetas que menor tiempo conllevan.</h3>
+        <button id="irFormulario">Ir al formulario</button>
+
     {% for receta in lista_recetas_portada %}
     <ul >
         <li id="tipoo">Tipo: <b>{{receta.tipo.nombre }}</b></li>

@@ -8,31 +8,31 @@ from django.db.models import Max
 def index(request):
     return HttpResponse("Recetas")
 
-def index_portada_NO(request):
-    tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
-    recetas_con_max_duracion = []
 
-    for tipo in tipos_recetas:
-        receta_max_duracion = Receta.objects.filter(tipo=tipo).order_by('-duracion').first()
-        if receta_max_duracion:
-            recetas_con_max_duracion.append(receta_max_duracion)
+from empresaRecetas.appEmpresaRecetas.forms import UsuarioForm
 
-    context = {'lista_recetas_portada': recetas_con_max_duracion}
-    return render(request, 'portada.html', context)
+
+
+def show_formulario(request):
+    return render(request, 'registro.html')
+
+
+#otra forma de conseguir los datos y evitar todo tipo de errores:
+
+def post_usuario_form(request): 
+    form = UsuarioForm(request.POST)
+    if form.is_valid():
+        nombre = form.cleaned_data['nombre']
+        apellidos = form.cleaned_data['apellidos']        
+        return HttpResponse(f" El nombre es: {nombre} {apellidos}")
+
 
 
 def index_portada(request):
     tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
-    recetas_con_max_duracion = []
-
-    for tipo in tipos_recetas:
-        receta = tipo.receta_set.order_by('-duracion').first()
-        if receta:
-            recetas_con_max_duracion.append(receta)
-
+    recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM( SELECT * FROM appEmpresaRecetas_Receta ORDER BY duracion ASC LIMIT 3) GROUP BY nombre ')
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
-
 
 
 #devuelve el listado de recetas
@@ -69,7 +69,6 @@ def show_receta(request, receta_id):
 #devuelve los detalles de un ingrediente 
 def show_ingrediente(request, ingrediente_id):
 	ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
-	
 	context = { 'ingrediente': ingrediente}
 	return render(request, 'ingrediente.html', context) 
 """	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'"""
