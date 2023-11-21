@@ -8,7 +8,7 @@ from django.db.models import Max
 def index(request):
     return HttpResponse("Recetas")
 
-def index_portada(request):
+def index_portada_NO(request):
     tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
     recetas_con_max_duracion = []
 
@@ -19,6 +19,21 @@ def index_portada(request):
 
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
+
+
+def index_portada(request):
+    tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
+    recetas_con_max_duracion = []
+
+    for tipo in tipos_recetas:
+        receta = tipo.receta_set.order_by('-duracion').first()
+        if receta:
+            recetas_con_max_duracion.append(receta)
+
+    context = {'lista_recetas_portada': recetas_con_max_duracion}
+    return render(request, 'portada.html', context)
+
+
 
 #devuelve el listado de recetas
 def index_recetas(request):
@@ -54,8 +69,8 @@ def show_receta(request, receta_id):
 #devuelve los detalles de un ingrediente 
 def show_ingrediente(request, ingrediente_id):
 	ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
-	recetas = ingrediente.receta_set.all()
-	context = { 'ingrediente': ingrediente, 'recetas' : recetas }
+	
+	context = { 'ingrediente': ingrediente}
 	return render(request, 'ingrediente.html', context) 
 """	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'"""
 """return HttpResponse(output)"""
@@ -63,7 +78,7 @@ def show_ingrediente(request, ingrediente_id):
 #devuelve los detalles de un tipo 
 def show_tipo(request, tipo_id):
 	tipo = get_object_or_404(TipoPlato, pk=tipo_id)
-	recetas =  Receta.objects.filter(tipo=tipo)
+	recetas = tipo.receta_set.all()
 	context = { 'recetas': recetas, 'tipo' : tipo }
 	return render(request, 'tipo.html', context)  
 """	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""

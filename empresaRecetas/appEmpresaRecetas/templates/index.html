@@ -9,7 +9,7 @@
     {% for d in lista_recetas %}
 	<ul>
 		<li>
-			<a href="{% url 'receta' receta_id = d.id  %}">{{ d.nombre}}</a>
+			<a href="{% url 'receta' receta_id=d.id  %}">{{ d.nombre}}</a>
 			<br>
 			{% with "images/"|add:d.nombre|add:".jpg" as imagen %}
         	<img src="{% static imagen %}" alt="">
