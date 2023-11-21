@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link rel="shortcut icon" href="{static 'images/favicon.ico' %}" type="image/x-icon" >
-<script src="{% static 'js/js1.js' %}"></script>
-
-<html lang="en">
-    <div class="mg-main-banner-section">
-
+<html lang="es">
     <head>
+        <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
-
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
+        <script src="{% static 'js/js1.js' %}"></script> 
     </head>
     <body>
-        
         <div id="content">
         <header> 
-            <h1>GESTOR DE RECETAS</h1>
-            <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
     
-    
-            <img src="{% static 'images/portada.jpg' %}" alt="IMAGEN">
+            
             <nav><p><a href="{% url 'portada' %}">Indice</a>
                 <a href="{% url 'index_recetas' %}">Recetas</a>
                 <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
                 <a href="{% url 'index_tipo' %}">Tipos de platos</a></p>
             </nav>
+            <div class="mg-main-banner-section">
+            
+                        
+                <h1 >GESTOR DE RECETAS</h1>
+               <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+               <img src="{% static 'images/plato.png' %}" alt="IMAGEN">
+               
+          
+   
+</div>
+<br>
 
-        </header> 
-         </div>
 
-            {% block contenido %}{% endblock %}
-            <footer>
-                <p><strong>Contacta con nosotros</strong></p>
-                <p><u>Instagram:</u> recipestore</p>
-                <p><u>Gmail:</u> recipestore@gmail.com</p>
-                <p><u>Telefono:</u> 787 888 886</p>
-            </footer>
-        </div>
-
-        <script> console.log("Hola") </script>
-
-    </body>
+</header> 
+   {% block contenido %}{% endblock %}
+   <footer>
+    <div class="footer-section">
+        <h2>Contacto</h2>
+        <p><strong>Email:</strong> recipestore@gmail.com</p>
+        <p><strong>Teléfono:</strong> 787888886</p>
+    </div>
+    <div class="footer-section">
+        <h2>Redes Sociales</h2>
+        <p><strong>Instagram:</strong> recipestore</p>
+        <p><strong>Facebook:</strong> recipestore</p>
+    </div>
     
+</footer>
+</div>
+</body>
+
 </html>
 
