@@ -4,29 +4,22 @@
 {% load static %}
 
 
-<<<<<<< HEAD
-<h2>Recipes Store</h2>
-=======
 
-
->>>>>>> 0f029dfc3827a970551c01d27f60b745188d787b
 <main>
     <h2>Recipes Store</h2>
+    
     <p>En Recipes Store, valoramos la calidad, la frescura y la simplicidad en la cocina. Todas nuestras recetas son seleccionadas cuidadosamente, probadas y presentadas de manera clara y concisa.
         Creemos que la cocina es una forma de expresión y creatividad, y estamos aquí para guiarte en cada paso del camino.</p>
 
    
     
         <h3>A continuacion tres de nuestras recetas que menor tiempo conllevan.</h3>
-<<<<<<< HEAD
-        <button id="irFormulario">Crear mi usuario</button>
-
-=======
->>>>>>> 0f029dfc3827a970551c01d27f60b745188d787b
-    {% for receta in lista_recetas_portada %}
-  <div class="receta-section2-container">
+        
+    <div class="receta-section2-container">
     <div class="receta-section2">
-    <div class="receta-section">
+    {% for receta in lista_recetas_portada %}
+  
+    
     <ul >
         <li id="tipoo">Tipo: <b>{{receta.tipo.nombre }}</b></li>
 
@@ -50,7 +43,7 @@
         <br>
 
         <a href="{% url 'receta' receta_id=receta.id %}">Ver detalles</a>
-    </div>
+    
     {% endfor %}
     
     

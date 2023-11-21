@@ -28,7 +28,7 @@ def post_usuario_form(request):
 
 def index_portada(request):
     tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
-    recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM( SELECT * FROM appEmpresaRecetas_Receta ORDER BY duracion ASC LIMIT 3) GROUP BY nombre ')
+    recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM( SELECT * FROM appEmpresaRecetas_Receta ORDER BY duracion ASC LIMIT 4) GROUP BY nombre')
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
 
