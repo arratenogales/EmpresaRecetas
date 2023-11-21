@@ -179,8 +179,18 @@ footer {
     margin-bottom: 20px; 
     
 }
-.receta-section2{
-    width: 43%; 
 
+.receta-section2-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.receta-section2 {
+    background-color: #f0f5f9;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 20px;
+    padding: 20px;
+    width: 43%; 
     display: inline-block;
+    box-sizing: border-box;
 }
