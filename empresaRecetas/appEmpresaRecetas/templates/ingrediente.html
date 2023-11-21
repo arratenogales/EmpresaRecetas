@@ -19,7 +19,7 @@
 	{% if recetas %}
         {% for d in recetas %}
 		<ul>
-			<li><a href="{% url 'ingrediente' ingrediente_id = d.id %}">{{ d.nombre}}</a></li>
+			<li><a href="{% url 'ingrediente' receta_id = d.id %}">{{ d.nombre}}</a></li>
 		</ul>
         {% endfor %}
 	{% endif %}
