@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block contenido %}
 {% if ingrediente %}
+<main>
 <h2>Datos del ingrediente {{ ingrediente.nombre}}</h2>
+</main>
     <ul>
         <li>
             Nombre: {{ ingrediente.nombre}}

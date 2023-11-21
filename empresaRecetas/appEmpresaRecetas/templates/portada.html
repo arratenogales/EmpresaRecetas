@@ -5,15 +5,18 @@
 
 
 
-<h2>Recipes Store</h2>
+
 <main>
+    <h2>Recipes Store</h2>
     <p>En Recipes Store, valoramos la calidad, la frescura y la simplicidad en la cocina. Todas nuestras recetas son seleccionadas cuidadosamente, probadas y presentadas de manera clara y concisa.
         Creemos que la cocina es una forma de expresión y creatividad, y estamos aquí para guiarte en cada paso del camino.</p>
 
+   
     
-    <section>
         <h3>A continuacion tres de nuestras recetas que menor tiempo conllevan.</h3>
     {% for receta in lista_recetas_portada %}
+    <div class="receta-section2">
+    <div class="receta-section">
     <ul >
         <li id="tipoo">Tipo: <b>{{receta.tipo.nombre }}</b></li>
 
@@ -37,9 +40,26 @@
         <br>
 
         <a href="{% url 'receta' receta_id=receta.id %}">Ver detalles</a>
+    </div>
     {% endfor %}
-    </section>
+    
+    
+    </div>
+   
+    <div class="receta-section2">
+    <p>La cocina es el corazón de cualquier hogar, un espacio donde los aromas exquisitos y los sabores cautivadores se entrelazan para crear experiencias inolvidables. Es más que un lugar para preparar alimentos; es el escenario donde se fusionan la creatividad, la tradición y el amor por la buena comida.
 
+        En la cocina, los ingredientes se convierten en obras maestras culinarias, y cada utensilio es una herramienta que desencadena la magia de la gastronomía. Es un laboratorio de experimentación, donde los chefs caseros exploran nuevas recetas, ajustan sabores y descubren el arte de equilibrar texturas y colores.
+        
+        La cocina no solo alimenta el cuerpo, sino también el alma. Es un espacio de encuentro, donde amigos y familiares se reúnen para compartir risas, historias y, por supuesto, deliciosas comidas. Desde desayunos reconfortantes hasta cenas elaboradas, la cocina es el escenario donde se tejen recuerdos duraderos.</p> 
+    <p>Las recetas son las guías que nos llevan a través del viaje culinario, proporcionando instrucciones detalladas para transformar ingredientes simples en platillos extraordinarios. Cada receta es única, llevando consigo la herencia de generaciones pasadas y la posibilidad de crear nuevas tradiciones.
+
+        Explorar recetas es aventurarse en un mundo de sabores, aromas y técnicas culinarias. Desde recetas clásicas que evocan nostalgia hasta innovadoras creaciones que desafían los límites de la creatividad, cada plato cuenta una historia única. Las recetas nos invitan a experimentar, a probar nuevos ingredientes y a adaptar los sabores según nuestros propios gustos.
+        
+        A través de las recetas, podemos viajar virtualmente a diferentes partes del mundo, explorando la diversidad de la cocina global. Cada plato cuenta la historia de una región, de sus ingredientes autóctonos y de las personas que han perfeccionado su preparación a lo largo del tiempo.
+        
+        En resumen, la cocina y las recetas son mucho más que simples actos de preparación de alimentos; son expresiones artísticas que alimentan tanto el cuerpo como el espíritu. Nos invitan a disfrutar de la vida a través de los sentidos, convirtiendo cada comida en una celebración de la creatividad y la conexión humana.</p>
+    </div>
 </main>
 <br><br>
 

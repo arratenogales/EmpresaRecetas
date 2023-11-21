@@ -25,28 +25,28 @@ h1 {
 }
 
 nav {
-    background-color: #333; /* Color de fondo del nav */
+    background-color: #333; 
     padding: 10px;
-    margin-bottom: 10px; /* Espaciado interno */
+    margin-bottom: 10px;
   }
   
   nav p {
     margin: 0;
-    text-align:center /* Eliminar el margen predeterminado del párrafo */
+    text-align:center 
   }
   
   nav a {
-    color: #fff; /* Color del texto */
-    text-decoration: none; /* Eliminar subrayado en los enlaces */
-    margin-right: 15px; /* Espaciado entre enlaces */
-    font-size: 16px; /* Tamaño del texto */
+    color: #fff; 
+    text-decoration: none; 
+    margin-right: 15px; 
+    font-size: 16px; 
   }
   
   nav a:hover {
-    text-decoration: underline; /* Subrayado al pasar el ratón sobre el enlace */
+    text-decoration: underline; 
   }
 
-h2{
+main h2{
     text-align: center;
     border-bottom: 2px dotted #10777b;
     font-size: 30px;
@@ -63,11 +63,11 @@ header{
     text-align: center;
     background-image: url("../images/portada.jpg");
     background-attachment: fixed;  
-    height: 59vh;          
+    height: 69vh;          
 }
 .mg-main-banner-section {
     background-image: url("../images/header.jpg");
-    height: 19vh; 
+    height: 39vh; 
     background-size: cover;
 }
 
@@ -86,15 +86,7 @@ main {
     margin-right: 5px;
 }
 
-footer{
-    background-color:#fcf5ed ;
-    padding: 14px;
-    border-bottom: 1px solid black;
-    font-size: 15px;
-    border: 1px solid #000000;
-    text-align: center;
 
-}
 
 p{
     text-align: justify;
@@ -103,11 +95,13 @@ p{
 }
 section {
     text-align: center; 
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
+
+
 table{
     
     margin:5px;
@@ -150,4 +144,43 @@ img{
     font-weight: 600;
     margin-bottom: 28px;
     text-align: center;
+}
+footer {
+    background-color: #f0f5f9; /* Azul claro pastel */
+    color: #545454; /* Gris oscuro para el texto */
+    padding: 30px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-section {
+    width: 45%;
+}
+
+.footer-section h2 {
+    color: #95a5a6; 
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    margin: 8px 0;
+}
+
+.footer-section strong {
+    color: #2c3e50; 
+}
+
+
+
+
+.receta-section {
+    margin-bottom: 20px; 
+    
+}
+.receta-section2{
+    width: 43%; 
+
+    display: inline-block;
 }

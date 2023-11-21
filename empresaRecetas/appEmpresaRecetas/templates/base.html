@@ -5,13 +5,14 @@
         <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
         <script src="{% static 'js/js1.js' %}"></script> 
     </head>
     <body>
         <div id="content">
         <header> 
     
-            <img src="{% static 'images/plato.png' %}" alt="IMAGEN">
+            
             <nav><p><a href="{% url 'portada' %}">Indice</a>
                 <a href="{% url 'index_recetas' %}">Recetas</a>
                 <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
@@ -22,6 +23,7 @@
                         
                 <h1 >GESTOR DE RECETAS</h1>
                <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+               <img src="{% static 'images/plato.png' %}" alt="IMAGEN">
                
           
    
@@ -32,11 +34,18 @@
 </header> 
    {% block contenido %}{% endblock %}
    <footer>
-       <p><strong>Contacta con nosotros.</strong></p>
-       <p>Instagram: recipestore</p>
-       <p>Gmail: recipestore@gmail.com</p>
-       <p>Telefono: 787888886</p>
-   </footer>
+    <div class="footer-section">
+        <h2>Contacto</h2>
+        <p><strong>Email:</strong> recipestore@gmail.com</p>
+        <p><strong>Teléfono:</strong> 787888886</p>
+    </div>
+    <div class="footer-section">
+        <h2>Redes Sociales</h2>
+        <p><strong>Instagram:</strong> recipestore</p>
+        <p><strong>Facebook:</strong> recipestore</p>
+    </div>
+    
+</footer>
 </div>
 </body>
 
