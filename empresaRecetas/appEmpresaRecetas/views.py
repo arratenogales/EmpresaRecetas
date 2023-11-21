@@ -17,8 +17,6 @@ def show_formulario(request):
     return render(request, 'registro.html')
 
 
-#otra forma de conseguir los datos y evitar todo tipo de errores:
-
 def post_usuario_form(request): 
     form = UsuarioForm(request.POST)
     if form.is_valid():
