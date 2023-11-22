@@ -4,10 +4,33 @@ document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("irFormulario");
 
     form.addEventListener("click", function() {
-        window.location.href = "{% url 'registrar' %}";
+        window.location.href = "registrar/";
     });
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var formulario = document.getElementById('miFormulario');
+
+    var aceptar = document.getElementById('Accept');
+    var enviarBoton = document.getElementById('btnRegis');
+
+    if (enviarBoton && aceptar) {
+        enviarBoton.disabled = !aceptar.checked;
+
+        aceptar.addEventListener('change', function() {
+            enviarBoton.disabled = !aceptar.checked;
+        });
+
+        enviarBoton.addEventListener('click', function() {
+            alert("Usuario registrado con éxito.");
+            window.location.href = "portada/";
+
+            document.getElementById('miFormulario').submit();  
+        });
+    }
+});
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -17,36 +40,3 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "/iniciar/";
     });
 });
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("btnRegis");
-
-    form.addEventListener("click", function() {
-        window.location.href = "{% url 'portada' %}";
-
-    });
-
-});
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("registro");
-
-    form.addEventListener("submit", function() {
-        var aceptar = form.elements["Accept"].checked;
-
-        if (!aceptar) {
-            alert("Debes aceptar las condiciones para registrarte.");
-
-        }else{
-            window.location.href = "{% url 'portada' %}";
-        }
-        
-
-
-    });
-});
-

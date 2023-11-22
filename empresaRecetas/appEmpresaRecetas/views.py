@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Receta, TipoPlato, Ingrediente, Writer
-from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 
 
@@ -18,28 +17,28 @@ from .forms import UsuarioForm
 
 def show_formulario(request):
     if request.method == 'POST':
-        nombre = request.POST['nombre']
-        apellidos = request.POST['apellidos']
-        email = request.POST['email']
-        edad = request.POST['edad']
-        direccion = request.POST['direccion']
-        usuario = request.POST['usuario']
-        contraseña = request.POST['contraseña']
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
 
-        nuevo_usuario = Writer(
-            nombre=nombre,
-            apellidos=apellidos,
-            email=email,
-            edad=edad,
-            direccion=direccion,
-            usuario=usuario,
-            contraseña=contraseña,
-        )
-        nuevo_usuario.save()
+            nuevo_usuario = Writer(
+                nombre=cleaned_data['nombre'],
+                apellidos=cleaned_data['apellidos'],
+                email=cleaned_data['email'],
+                edad=cleaned_data['edad'],
+                direccion=cleaned_data['direccion'],
+                usuario=cleaned_data['usuario'],
+                contraseña=cleaned_data['contraseña'],
+            )
+            nuevo_usuario.save()
 
-        return redirect('portada')
+            return redirect('portada')
 
-    return render(request, 'registro.html')
+    else:
+        form = UsuarioForm()
+
+
+    return render(request, 'registro.html', {'form': form})
 
 
 def post_usuario_form(request): 
