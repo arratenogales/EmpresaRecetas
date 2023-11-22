@@ -28,23 +28,18 @@ class Pregunta(models.Model):
 
     def __str__(self):
         return self.pregunta 
-
-class Author(models.Model):
-    nombre = models.CharField(max_length=255)
-    fecha_nac = models.DateField()
-    pais = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.nombre 
-
-class Editor(models.Model):
-    nombre = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.nombre  
+  
     
-class Reader(models.Model):
+class Writer(models.Model):
     nombre = models.CharField(max_length=255)
+    apellidos = models.CharField(max_length=255)
+    edad = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    direccion = models.CharField(max_length=255)
+    usuario = models.CharField(max_length=255)
+    contraseña = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.nombre
+        return self.usuario
+    
+

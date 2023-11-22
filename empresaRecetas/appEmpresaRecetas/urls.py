@@ -14,5 +14,6 @@ urlpatterns = [
     path('tipo/<int:tipo_id>/', views.show_tipo, name='tipo'),
   
     path('registrar/', views.show_formulario, name='registrar'),
+    path('iniciar/', views.show_inicio_sesion, name='iniciar'),
     path('usuario/', views.post_usuario_form, name='post_usuario_form')
 ]

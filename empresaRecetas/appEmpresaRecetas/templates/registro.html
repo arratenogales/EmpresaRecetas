@@ -3,61 +3,59 @@
 {% block titulo %}Formulario de Registro{% endblock %}
 
 {% block contenido %}
-        <form action="{% url 'registrar' %}" method = "post">
+
+        <form id = "registro" action="{% url 'registrar' %}" method = "post" >
            {% csrf_token %} 
 
            <H1>FORMULARIO DE REGISTRO</H1>
            <P>Rellena el siguiente formulario para crearte un usuario en el gestor de recetas</P>
 
-           <form action="form.php" method="post"></form>
-
            <fieldset>
-            <p>
-                <label>Nombre: </label>
-                <input type = "text" name = "nombre">
-            </p>
+                <p>
+                    <label>Nombre: </label>
+                    <input type = "text" name = "nombre">
+                </p>
 
-            <p>
-                <label>Apellidos: </label>
-                <input type = "text" name = "apellidos">
-            </p>
+                <p>
+                    <label>Apellidos: </label>
+                    <input type = "text" name = "apellidos">
+                </p>
 
-            <p>
-                <label>Email: </label>
-                <input type = "email" name = "email">
-            </p>
+                <p>
+                    <label>Email: </label>
+                    <input type = "email" name = "email">
+                </p>
 
-            <p>
-                <label>Edad: </label>
-            <select id="groups" name="groups"> 
-                <option>Entre 18 y 65</option>
-                <option selected>Menor de 18</option>
-                <option>Mayor de 65</option>
-              
-            </select>
-            </p>
-            <p>
-                <label>Direccion: </label>
-                <input type = "text" name = "direccion">
-            </p>
+                <p>
+                    <label>Edad: </label>
+                    <select id="groups" name="groups"> 
+                    <option>Entre 18 y 65</option>
+                    <option selected>Menor de 18</option>
+                    <option>Mayor de 65</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Direccion: </label>
+                    <input type = "text" name = "direccion">
+                </p>
 
-            <p>
-                <label>Usuario: </label>
-                <input type = "text" name = "usuario">
-            </p>
+                <p>
+                    <label>Usuario: </label>
+                    <input type = "text" name = "usuario">
+                </p>
 
-            <p>
-                <label>Contraseña: </label>
-                <input type="password"  name="contra"><br><br>
-            </p>
+                <p>
+                    <label>Contraseña: </label>
+                    <input type="password"  name="contra"><br><br>
+                </p>
+                
             
-           
-            </fieldset>
+            </fieldset> 
 
             <input type="checkbox" name="Accept" value="Aceptar"> Acepto las condiciones<br><br>
 
             <p>
-                <input type = "submit" value = "Registrarme">
+                <input type = "submit" value = "Registrarme" id="btnRegis">
 
             </p>
         </form>

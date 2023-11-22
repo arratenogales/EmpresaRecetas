@@ -3,8 +3,10 @@ from django.http import HttpResponse
 
 from django.shortcuts import get_object_or_404, get_list_or_404
 
-from .models import Receta, TipoPlato, Ingrediente
-from django.db.models import Max
+from .models import Receta, TipoPlato, Ingrediente, Writer
+from django.contrib.auth import authenticate, login
+
+
 def index(request):
     return HttpResponse("Recetas")
 
@@ -14,7 +16,48 @@ from .forms import UsuarioForm
 
 
 def show_formulario(request):
-    return render(request, 'registro.html')
+	if request.method == 'POST':
+
+		nombre = request.POST['nombre']
+		apellidos = request.POST['apellidos']
+		email = request.POST['email']
+		edad = request.POST['edad']
+		direccion = request.POST['direccion']
+		usuario = request.POST['usuario']
+		contraseña = request.POST['contraseña']
+
+
+		nuevo_usuario = Writer(
+            nombre=nombre,
+            apellidos=apellidos,
+            email=email,
+            edad=edad,
+            direccion=direccion,
+			usuario=usuario,
+            contraseña=contraseña,
+
+        )
+		nuevo_usuario.save()
+
+		return render(request, 'iniciar_sesion')
+	return render(request, 'registro.html')
+
+
+def show_inicio_sesion(request):
+	if request.method == 'POST':
+		
+		usuario = request.POST['usuario']
+		contraseña = request.POST['contraseña']
+
+		us= authenticate(request, username=usuario, password=contraseña)
+
+		if us is not None:
+			login(request, us)
+			return render(request, 'portada.html')
+		else:
+			return render(request, 'mensaje_credenciales_invalidas.html')
+
+	return render(request, 'inicio_sesion.html')
 
 
 def post_usuario_form(request): 
