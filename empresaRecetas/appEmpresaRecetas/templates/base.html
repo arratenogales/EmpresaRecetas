@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script src="{% static 'js/js1.js' %}"></script> 
+
         {% block java %} {% endblock %}
     </head>
     <body>
@@ -16,6 +18,8 @@
                 <a href="{% url 'index_recetas' %}">Recetas</a>
                 <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
                 <a href="{% url 'index_tipo' %}">Tipos de platos</a>
+                {% block boton_volver %}{% endblock %}
+
                 
             </nav>
             <div class="mg-main-banner-section">

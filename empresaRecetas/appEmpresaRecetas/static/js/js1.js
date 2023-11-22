@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("irFormulario");
 
     form.addEventListener("click", function() {
-        window.location.href = "/registrar/";
+        window.location.href = "{% url 'registrar' %}";
     });
 });
 
@@ -39,6 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var form = document.getElementById("volver");
+
+    form.addEventListener("click", function() {
+        var url = form.dataset.url;
+        window.location.href = url;
+    });
+});
+
 
 document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("registro");
@@ -58,7 +67,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-alert("Datos incorrectos. Por favor, inténtelo de nuevo.");
-window.location.href = "{% url 'iniciar_sesion' %}";

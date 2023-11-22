@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-        <form id = "registro" action="{% url 'iniciar' %}" method = "post" >
+        <form id = "iniciosesion" action="{% url 'iniciar' %}" method = "post" >
            {% csrf_token %} 
 
            <H1>FORMULARIO DE INICIO SESION</H1>
@@ -27,7 +27,7 @@
 
 
             <p>
-                <input type = "submit" value = "Iniciar Sesion">
+                <input type = "submit" value = "Iniciar Sesion" id="init">
 
             </p>
         </form>

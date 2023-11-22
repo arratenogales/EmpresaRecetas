@@ -5,6 +5,8 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 
 from .models import Receta, TipoPlato, Ingrediente, Writer
 from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
+
 
 
 def index(request):
@@ -13,51 +15,34 @@ def index(request):
 
 from .forms import UsuarioForm
 
-
+def bienvenida(request):
+    
+    return render(request, 'Bienvenida.html')
 
 def show_formulario(request):
-	if request.method == 'POST':
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        apellidos = request.POST['apellidos']
+        email = request.POST['email']
+        edad = request.POST['edad']
+        direccion = request.POST['direccion']
+        usuario = request.POST['usuario']
+        contraseña = request.POST['contraseña']
 
-		nombre = request.POST['nombre']
-		apellidos = request.POST['apellidos']
-		email = request.POST['email']
-		edad = request.POST['edad']
-		direccion = request.POST['direccion']
-		usuario = request.POST['usuario']
-		contraseña = request.POST['contraseña']
-
-
-		nuevo_usuario = Writer(
+        nuevo_usuario = Writer(
             nombre=nombre,
             apellidos=apellidos,
             email=email,
             edad=edad,
             direccion=direccion,
-			usuario=usuario,
+            usuario=usuario,
             contraseña=contraseña,
-
         )
-		nuevo_usuario.save()
+        nuevo_usuario.save()
 
-		return render(request, 'iniciar_sesion')
-	return render(request, 'registro.html')
+        return redirect('portada')
 
-
-def show_inicio_sesion(request):
-	if request.method == 'POST':
-		
-		usuario = request.POST['usuario']
-		contraseña = request.POST['contraseña']
-
-		us= authenticate(request, username=usuario, password=contraseña)
-
-		if us is not None:
-			login(request, us)
-			return render(request, 'portada.html')
-		else:
-			return render(request, 'mensaje_credenciales_invalidas.html')
-
-	return render(request, 'inicio_sesion.html')
+    return render(request, 'registro.html')
 
 
 def post_usuario_form(request): 
