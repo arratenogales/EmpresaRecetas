@@ -21,15 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("irPortada");
-
-    form.addEventListener("click", function() {
-        window.location.href = "{% url 'portada' %}";
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
     var form = document.getElementById("btnRegis");
 
     form.addEventListener("click", function() {
@@ -39,14 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("volver");
-
-    form.addEventListener("click", function() {
-        var url = form.dataset.url;
-        window.location.href = url;
-    });
-});
 
 
 document.addEventListener("DOMContentLoaded", function() {
