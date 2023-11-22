@@ -186,7 +186,10 @@ footer {
     
 }
 
-
+.rb{
+    display: inline-block; 
+    width: 40%;
+}
 
 .receta-section2 {
     display: inline-block;

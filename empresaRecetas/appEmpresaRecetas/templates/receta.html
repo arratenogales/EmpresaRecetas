@@ -3,11 +3,11 @@
 {% block titulo %} Detalles de la receta {% endblock %}
 
 {% block contenido %}
-{% if receta %}
-<main>
-<h2>Datos de la receta de  {{ receta.nombre}} </h2>
-</main>
 
+{% if receta %}
+
+<div class="rb">
+    <h2>Datos de la receta de  {{ receta.nombre}} </h2>
     <ul>
         <li>
            Nombre: {{ receta.nombre}}
@@ -19,7 +19,8 @@
            Tipo de receta: {{ receta.tipo}}
         </li>
     </ul>
-    <section>
+</div>
+    <div class="rb">
     <h3>Lista de ingredientes</h3>
 	{% if ingredientes %}
     {% for i in ingredientes %}
@@ -29,7 +30,7 @@
 		</ul>
         {% endfor %}
 	{% endif %}
-</section>
+</div>
 {% else %}
     <p>No existe esta receta.</p>
 {% endif %}
