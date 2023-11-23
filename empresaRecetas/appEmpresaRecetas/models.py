@@ -1,11 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import Group, Permission
-from django.contrib import admin
-from django.utils.html import format_html
-
-#todo son pruebas nada es fijo.
-
-
+from django.contrib.auth.models import AbstractUser
 
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
@@ -28,8 +22,27 @@ class Receta(models.Model):
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     def __str__(self):
         return self.nombre
+
+class User(AbstractUser):
+    nombre = models.CharField(max_length=255)
+    apellidos = models.CharField(max_length=255)
+    edad = models.CharField(max_length=20)
+    email = models.EmailField(unique=True)
+    direccion = models.CharField(max_length=255)
+    usuario = models.CharField(max_length=255)
+    contraseña = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.nombre
     
-class Pregunta(models.Model):
+
+    
+'''
+
+from django.contrib.auth.models import Group, Permission
+from django.contrib import admin
+from django.utils.html import format_html
+  class Pregunta(models.Model):
     fecha = models.DateTimeField('Fecha de publicación')
     pregunta = models.CharField(max_length=200)
 
@@ -95,4 +108,4 @@ class Person(models.Model):
         )
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'colored_name')
+    list_display = ('first_name', 'last_name', 'colored_name')'''

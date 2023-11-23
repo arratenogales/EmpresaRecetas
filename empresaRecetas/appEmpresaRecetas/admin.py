@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Receta, Ingrediente, TipoPlato
+''''from .models import Receta, Ingrediente, TipoPlato
 from .models import Pregunta
 from .models import Writer, Reader, Role
 
@@ -11,7 +11,7 @@ class PreguntaAdmin(admin.ModelAdmin):
     list_display = ('fecha', 'pregunta')  # Campos que se ponen la lista
     search_fields  = ('pregunta',)
 
-admin.site.register(Pregunta, PreguntaAdmin)
+
 
 
 class BaseAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ admin.site.register(Pregunta, BaseAdmin)
 
 
 
-
+nn
 
 
 @admin.register(Writer)
@@ -36,4 +36,4 @@ class EditorAdmin(BaseAdmin):
 class ReaderAdmin(BaseAdmin):
     pass
 
-admin.site.register(Role)
+admin.site.register(Role)'''

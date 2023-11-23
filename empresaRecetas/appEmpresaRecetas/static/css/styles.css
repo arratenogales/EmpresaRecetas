@@ -82,14 +82,15 @@ header{
 }
 .cg{
     text-align: center;
+    padding: 15;
+    margin: auto;
 }
 .contgrande {
     width: 25%;
-    padding: 15px;
+    padding: 25px;
     text-align: center;
     background-color: #f9fcfa;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin:auto;
    border: 1px solid #220033;
 }
 
@@ -165,8 +166,8 @@ img{
     text-align: center;
 }
 footer {
-    background-color: #f0f5f9; /* Azul claro pastel */
-    color: #545454; /* Gris oscuro para el texto */
+    background-color: #f0f5f9; 
+    color: #545454; 
     padding: 30px 0;
     text-align: center;
     display: flex;
