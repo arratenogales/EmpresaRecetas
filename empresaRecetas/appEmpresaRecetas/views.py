@@ -14,6 +14,9 @@ def index(request):
 
 from .forms import UsuarioForm
 
+def show_formulario(request):
+    return render(request, 'registro.html')
+
 
 """def show_formulario(request):
     if request.method == 'POST':

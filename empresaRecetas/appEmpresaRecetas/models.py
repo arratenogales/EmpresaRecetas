@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
@@ -32,6 +32,15 @@ class User(AbstractUser):
     usuario = models.CharField(max_length=255)
     contraseña = models.CharField(max_length=255)
 
+
+    user_groups = models.ManyToManyField(
+        Group,
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        related_name='custom_user_groups',  # Cambié 'user_set' a 'custom_user_groups'
+        related_query_name='user',
+    )
     def __str__(self):
         return self.nombre
     

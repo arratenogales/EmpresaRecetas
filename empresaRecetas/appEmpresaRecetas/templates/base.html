@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="es">
+{% load i18n %}
+<html lang="{% get_current_language %}">
     <head>
         <meta charset="UTF-8">
-        <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
+        <title>{% block titulo %}{% trans "GESTOR DE RECETAS" %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <script src="{% static 'js/js1.js' %}"></script> 
 
@@ -14,19 +15,19 @@
         <header> 
     
             
-            <nav><p><a href="{% url 'portada' %}">Indice</a>
-                <a href="{% url 'index_recetas' %}">Recetas</a>
-                <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
-                <a href="{% url 'index_tipo' %}">Tipos de platos</a>
-                <button id="irFormulario"><a href="{% url 'registrar' %}">Registrarme</a></button></p>
+            <nav><p><a href="{% url 'portada' %}">{% trans "Indice" %}</a>
+                <a href="{% url 'index_recetas' %}">{% trans "Recetas" %}</a>
+                <a href="{% url 'index_ingrediente' %}">{% trans "Ingredientes" %}</a>
+                <a href="{% url 'index_tipo' %}">{% trans "Tipos de platos" %}/a>
+                <button id="irFormulario"><a href="{% url 'registrar' %}">{% trans "Registrarme" %}</a></button></p>
 
                 
             </nav>
             <div class="mg-main-banner-section">
             
                         
-                <h1 >GESTOR DE RECETAS</h1>
-               <p>La mejor pagina wep para aprender a hacer las mejores recetas.</p>
+                <h1>{% trans "GESTOR DE RECETAS" %}</h1>
+               <p>{% trans "La mejor pagina wep para aprender a hacer las mejores recetas." %}</p>
                <img src="{% static 'images/plato.png' %}" alt="IMAGEN">
                
           
@@ -39,12 +40,12 @@
    {% block contenido %}{% endblock %}
    <footer>
     <div class="footer-section">
-        <h2>Contacto</h2>
+        <h2>{% trans "Contacto" %}</h2>
         <p><strong>Email:</strong> recipestore@gmail.com</p>
         <p><strong>Teléfono:</strong> 787888886</p>
     </div>
     <div class="footer-section">
-        <h2>Redes Sociales</h2>
+        <h2>{% trans "Redes sociales" %}</h2>
         <p><strong>Instagram:</strong> recipestore</p>
         <p><strong>Facebook:</strong> recipestore</p>
     </div>
