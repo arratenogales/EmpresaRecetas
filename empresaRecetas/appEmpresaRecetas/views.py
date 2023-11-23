@@ -51,7 +51,7 @@ def post_usuario_form(request):
 
 
 def index_portada(request):
-    tipos_recetas = TipoPlato.objects.all()  # Obtener todos los tipos de recetas
+
     recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM appEmpresaRecetas_Receta WHERE (tipo_id, duracion) IN ( SELECT tipo_id, MIN(duracion) as max_duracion FROM appEmpresaRecetas_Receta GROUP BY tipo_id)')
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
@@ -89,12 +89,13 @@ def show_receta(request, receta_id):
 	return render(request, 'receta.html', context)
 
 #devuelve los detalles de un ingrediente 
+
 def show_ingrediente(request, ingrediente_id):
 	ingrediente = get_object_or_404(Ingrediente, pk=ingrediente_id)
-	context = { 'ingrediente': ingrediente}
+	recetas = ingrediente.receta_set.all()
+	context = { 'ingrediente': ingrediente, 'recetas' : recetas }
 	return render(request, 'ingrediente.html', context) 
 """	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'"""
-"""return HttpResponse(output)"""
 
 #devuelve los detalles de un tipo 
 def show_tipo(request, tipo_id):

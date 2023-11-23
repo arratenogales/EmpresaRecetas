@@ -1,23 +1,25 @@
 {% extends "base.html" %}
 {% block contenido %}
 {% if ingrediente %}
-<main>
+<div class="cg"> 
 <h2>Datos del ingrediente {{ ingrediente.nombre}}</h2>
-</main>
-    <ul>
-        <li>
-            Nombre: {{ ingrediente.nombre}}
-        </li>
-        <li>
-            Kcal: {{ ingrediente.kcal}}
-        </li>
-        <li>
-            Grasas: {{ ingrediente.grasas}}
-        </li>
-        
-    </ul>
-    <section>
-        <h3>Lista de recetas de este ingrediente</h3>
+<div class="body2">
+<div class="contgrande">
+     <div class="ingf">
+    <table>
+        <tr>
+            <td><u>Kcal:</u></td>
+            <td>{{ ingrediente.kcal}}</td>
+        </tr>
+        <tr>
+            <td><u>Grasas:</u></td>
+            <td> {{ ingrediente.grasas}}</td>
+        </tr>
+    </table>
+   </div>
+    
+        <div class="ingf">
+        <p>Lista de recetas de este ingrediente</p>
 	{% if recetas %}
         {% for d in recetas %}
 		<ul>
@@ -25,7 +27,11 @@
 		</ul>
         {% endfor %}
 	{% endif %}
-    </section>
+</div>
+</div>
+</div>
+</div>
+</main>  
 {% else %}
     <p>No existe este ingrediente.</p>
 {% endif %}

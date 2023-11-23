@@ -4,20 +4,30 @@
 {% load static %}
 <main>
 	<div class="ing">
-<h2>Listado de ingredientes </h2>
+<h2>Ingredientes </h2>
 <img src="{% static 'images/ing.jpg' %}" alt="IMAGEN ingredientes">
 </div>
-</main>
+
 {% if lista_ingredientes %}
     {% for d in lista_ingredientes %}
 	<div class="lista-rec">
 	<ul>
 		<li>
-		    <a href="/appEmpresaRecetas/ingrediente/{{ d.id }}">{{ d.nombre}}</a>
+		    <a href="{% url 'ingrediente' ingrediente_id=d.id %}">{{ d.nombre}}</a>
+			
 		</li>
 	</ul>
     </div>
 	{% endfor %}
+	<div class="receta-section3">
+	<p>En la danza de sabores y aromas que caracteriza a la culinaria, los ingredientes son las estrellas que protagonizan cada plato. Desde la untuosidad del aceite de oliva, que acaricia con suavidad las ensaladas, hasta el vibrante aderezo César, que despierta los sentidos con su mezcla de ajo, parmesano y anchoas. El aguacate, con su textura cremosa, se convierte en un elemento versátil, ya sea en guacamoles o como complemento en tostadas. El ajo, con su inconfundible aroma, aporta profundidad a salsas y platos de carne. La albahaca, con su frescura herbal, perfuma con elegancia diversos platillos.
+	</p>
+<p>En este apasionante viaje culinario, el apio agrega su crujiente frescura, mientras que el arroz, versátil y energético, se erige como el compañero ideal en innumerables recetas. El azúcar, maestro del dulzor, da vida a postres y bebidas, equilibrando sabores con su toque único. El brócoli, con su vibrante color verde, aporta nutrición y versatilidad a ensaladas y platillos al vapor. El caldo de pollo, con su aroma reconfortante, constituye la esencia misma de sopas y guisos que acarician el alma.
+</p>
+<p>En esta sinfonía de sabores, cada ingrediente, desde la frescura del cilantro hasta la intensidad del chocolate negro, juega su papel para componer experiencias culinarias únicas. Ya sea una suculenta panceta, el reconfortante aroma de la canela, o el sutil perfume del jengibre, cada ingrediente agrega su propia historia a la narrativa de la gastronomía. En la danza de ingredientes, el arte culinario se revela en cada preparación, convirtiendo cada bocado en una experiencia memorable.
+</p>
+</div>
+</main>
 {% else %}
 <p>No hay ingredientes.</p>
 {% endif %}

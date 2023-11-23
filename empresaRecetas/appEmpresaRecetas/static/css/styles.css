@@ -76,13 +76,26 @@ header{
     margin: 0 auto; 
 }
 
+.ingf {
+    display: inline-block;
 
-
-
+}
+.cg{
+    text-align: center;
+}
+.contgrande {
+    width: 25%;
+    padding: 15px;
+    text-align: center;
+    background-color: #f9fcfa;
+    margin-left: 20px;
+    margin-right: 20px;
+   border: 1px solid #220033;
+}
 
 
 main {
-    
+        
     padding: 15px;
     text-align: justify;
     background-color: #f9fcfa;
