@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from django.shortcuts import get_object_or_404, get_list_or_404
 
-from .models import Receta, TipoPlato, Ingrediente, Writer
+from .models import Receta, TipoPlato, Ingrediente,User
 from django.shortcuts import redirect
 
 
@@ -15,7 +15,7 @@ def index(request):
 from .forms import UsuarioForm
 
 
-def show_formulario(request):
+"""def show_formulario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
@@ -48,7 +48,7 @@ def post_usuario_form(request):
         nombre = form.cleaned_data['nombre']
         apellidos = form.cleaned_data['apellidos']        
         return HttpResponse(f"Registro exitoso. Bienvenid@ {nombre} {apellidos}")
-
+"""
 
 def index_portada(request):
 
@@ -110,15 +110,18 @@ def show_tipo(request, tipo_id):
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
-def my_view(request):
+def show_login(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
         
-        
+        return redirect('EmpresaRecetas:writters')
     else:
           print("error")
         
     return render(request, 'login.html')
+
+def show_writters(request):
+    return render(request, 'writters.html')
