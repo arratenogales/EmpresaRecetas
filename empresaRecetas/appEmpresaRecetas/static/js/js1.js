@@ -1,14 +1,5 @@
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("irFormulario");
-
-    form.addEventListener("click", function() {
-        window.location.href = "registrar/";
-    });
-});
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
     var formulario = document.getElementById('miFormulario');

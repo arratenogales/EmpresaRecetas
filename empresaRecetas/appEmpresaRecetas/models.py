@@ -1,5 +1,12 @@
 from django.db import models
- 
+from django.contrib.auth.models import Group, Permission
+from django.contrib import admin
+from django.utils.html import format_html
+
+#todo son pruebas nada es fijo.
+
+
+
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
     kcal = models.FloatField(default=0)
@@ -29,19 +36,30 @@ class Pregunta(models.Model):
     def __str__(self):
         return self.pregunta 
 
-class Author(models.Model):
-    nombre = models.CharField(max_length=255)
-    fecha_nac = models.DateField()
-    pais = models.CharField(max_length=100)
+
+#roles
+class Role(models.Model):
+    name = models.CharField(max_length=205, unique=True)
 
     def __str__(self):
-        return self.nombre 
+        return self.name
 
-class Editor(models.Model):
-    nombre = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.nombre  
+wr_group, creado = Group.objects.get_or_create(name='Writer')
+if creado:
+    wr_group.permissions.add(
+        Permission.objects.get(codename='view_receta'),
+        Permission.objects.get(codename='add_receta'),
+        Permission.objects.get(codename='change_receta'),
+        Permission.objects.get(codename='delete_receta'),
+    )
+
+rd_group, creado = Group.objects.get_or_create(name='Reader')
+if creado:
+    rd_group.permissions.add(
+        Permission.objects.get(codename='view_receta'),
+    )
+
     
 class Reader(models.Model):
     nombre = models.CharField(max_length=255)
@@ -61,3 +79,20 @@ class Writer(models.Model):
     def __str__(self):
         return self.usuario
     
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    color_code = models.CharField(max_length=6)
+
+    @admin.display
+    def colored_name(self):
+        return format_html(
+            '<span style="color: #{};">{} {}</span>',
+            self.color_code,
+            self.first_name,
+            self.last_name,
+        )
+
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'colored_name')

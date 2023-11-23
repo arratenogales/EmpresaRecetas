@@ -1,28 +1,39 @@
 from django.contrib import admin
 from .models import Receta, Ingrediente, TipoPlato
-from .models import Pregunta, Author
-from .models import Author, Editor, Reader
+from .models import Pregunta
+from .models import Writer, Reader, Role
 
 
-admin.site.register(Receta)
-admin.site.register(Ingrediente)
-admin.site.register(TipoPlato)
+
 
 
 class PreguntaAdmin(admin.ModelAdmin):
-    list_display = ('fecha', 'pregunta')  # Campos a mostrar en la lista
+    list_display = ('fecha', 'pregunta')  # Campos que se ponen la lista
     search_fields  = ('pregunta',)
 
 admin.site.register(Pregunta, PreguntaAdmin)
 
 
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'fecha_nac', 'pais') 
-    search_fields  = ('nombre', 'pais')  
+class BaseAdmin(admin.ModelAdmin):
+    list_display = ('usuario',)  
+    search_fields = ('nombre', 'apellidos')  
 
-admin.site.register(Author, AuthorAdmin)
+admin.site.register(Receta, BaseAdmin)
+admin.site.register(Ingrediente, BaseAdmin)
+admin.site.register(TipoPlato, BaseAdmin)
+admin.site.register(Pregunta, BaseAdmin)
 
 
-@admin.register(Editor, Reader)
-class PersonAdmin(admin.ModelAdmin):
+
+
+
+
+@admin.register(Writer)
+class EditorAdmin(BaseAdmin):
     pass
+
+@admin.register(Reader)
+class ReaderAdmin(BaseAdmin):
+    pass
+
+admin.site.register(Role)
