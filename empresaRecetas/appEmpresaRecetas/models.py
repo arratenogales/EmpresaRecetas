@@ -1,6 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Group
-
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
     kcal = models.FloatField(default=0)
@@ -23,27 +23,17 @@ class Receta(models.Model):
     def __str__(self):
         return self.nombre
 
-class User(AbstractUser):
+class User(models.Model):
     nombre = models.CharField(max_length=255)
     apellidos = models.CharField(max_length=255)
     edad = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
     direccion = models.CharField(max_length=255)
-    usuario = models.CharField(max_length=255)
-    contraseña = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
 
-
-    user_groups = models.ManyToManyField(
-        Group,
-        verbose_name='groups',
-        blank=True,
-        help_text='The groups this user belongs to.',
-        related_name='custom_user_groups',  # Cambié 'user_set' a 'custom_user_groups'
-        related_query_name='user',
-    )
     def __str__(self):
         return self.nombre
-    
 
     
 '''

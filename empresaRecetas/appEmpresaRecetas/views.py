@@ -11,11 +11,11 @@ from django.shortcuts import redirect
 def index(request):
     return HttpResponse("Recetas")
 
-
+'''
 from .forms import UsuarioForm
 
 def show_formulario(request):
-    return render(request, 'registro.html')
+    return render(request, 'registro.html')'''
 
 
 """def show_formulario(request):
@@ -113,18 +113,34 @@ def show_tipo(request, tipo_id):
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
-def show_login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        
-        return redirect('EmpresaRecetas:writters')
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .forms import InicioSesionForm
+
+def iniciar_sesion(request):
+    if request.method == 'POST':
+        form = InicioSesionForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['usuario']
+            password = form.cleaned_data['contra']
+            
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                print("Usuario autenticado y sesión establecida:", user)
+                # Redirigir a una página de éxito o a donde desees después del inicio de sesión
+                return redirect('EmpresaRecetas:writters')
+            else:
+                print("Credenciales no válidas")
+
     else:
-          print("error")
-        
-    return render(request, 'login.html')
+        form = InicioSesionForm()
+
+    return render(request, 'login.html', {'form': form})
 
 def show_writters(request):
     return render(request, 'writters.html')
