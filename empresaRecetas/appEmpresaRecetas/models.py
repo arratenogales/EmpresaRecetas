@@ -26,7 +26,7 @@ class Receta(models.Model):
 class User(models.Model):
     nombre = models.CharField(max_length=255)
     apellidos = models.CharField(max_length=255)
-    edad = models.CharField(max_length=20)
+    edad = models.IntegerField(max_length=20)
     email = models.EmailField(unique=True)
     direccion = models.CharField(max_length=255)
     username = models.CharField(max_length=255)

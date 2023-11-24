@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="{% get_current_language %}">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>{% block titulo %}GESTOR DE RECETAS{% endblock %}</title>
@@ -17,7 +17,7 @@
                 <a href="{% url 'index_recetas' %}">Recetas</a>
                 <a href="{% url 'index_ingrediente' %}">Ingredientes</a>
                 <a href="{% url 'index_tipo' %}">Tipos de platos</a>
-                <button id="irFormulario">Crear mi usuario</button></p>
+                <button id="irFormulario"><a href="{% url 'registrar' %}">Registrarme</a></button></p>
                 
             </nav>
             <div class="mg-main-banner-section">

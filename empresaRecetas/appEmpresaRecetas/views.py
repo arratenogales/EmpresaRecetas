@@ -3,47 +3,58 @@ from django.http import HttpResponse
 
 from django.shortcuts import get_object_or_404, get_list_or_404
 
-from .models import Receta, TipoPlato, Ingrediente,User
+from .models import Receta, TipoPlato, Ingrediente
 from django.shortcuts import redirect
 
+from django.contrib.auth.models import User, Permission
+from django.contrib.contenttypes.models import ContentType
 
 
 def index(request):
     return HttpResponse("Recetas")
 
-'''
+
 from .forms import UsuarioForm
 
-def show_formulario(request):
-    return render(request, 'registro.html')'''
-
-
 """def show_formulario(request):
+    return render(request, 'registro.html')
+"""
+
+def show_formulario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
-        if form.is_valid():
-            cleaned_data = form.cleaned_data
-
-            nuevo_usuario = Writer(
-                nombre=cleaned_data['nombre'],
-                apellidos=cleaned_data['apellidos'],
-                email=cleaned_data['email'],
-                edad=cleaned_data['edad'],
-                direccion=cleaned_data['direccion'],
-                usuario=cleaned_data['usuario'],
-                contraseña=cleaned_data['contraseña'],
+        if form.is_valid() and form.cleaned_data['Accept']:
+            nuevo_usuario = User(
+                nombre=form.cleaned_data['nombre'],
+                apellidos=form.cleaned_data['apellidos'],
+                email=form.cleaned_data['email'],
+                edad=form.cleaned_data['edad'],
+                direccion=form.cleaned_data['direccion'],
+                usuario=form.cleaned_data['usuario'],
+                contraseña=form.cleaned_data['contraseña'],
             )
             nuevo_usuario.save()
 
+            # intento de permisos para editar recetas
+            if request.user.is_authenticated: 
+                content_type = ContentType.objects.get_for_model(Receta)
+                add_permission = Permission.objects.get(content_type=content_type, codename='add_receta')
+                change_permission = Permission.objects.get(content_type=content_type, codename='change_receta')
+                delete_permission = Permission.objects.get(content_type=content_type, codename='delete_receta')
+                nuevo_usuario.user_permissions.add(add_permission, change_permission, delete_permission)
+
+
             return redirect('portada')
+        else:
+            form.add_error('Accept', 'Debes aceptar las condiciones para registrarte.')
+
 
     else:
         form = UsuarioForm()
 
-
     return render(request, 'registro.html', {'form': form})
 
-
+"""
 def post_usuario_form(request): 
     form = UsuarioForm(request.POST)
     if form.is_valid():
