@@ -221,3 +221,27 @@ footer {
     align-items: center; 
     margin: 0 auto; 
 }
+
+#imagen-seleccionada {
+    border: solid 1px #ccc;
+    width: 430px;
+    height: 300px;
+    padding: 5px;
+  }
+
+ 
+
+  li img {
+    width: 150px;
+    height: 100px;
+   
+    border: solid 1px #ccc;
+    padding: 3px;
+    margin: 2px;
+    
+    
+  }
+
+  #thumbs{
+    display: inline-block; 
+  }
