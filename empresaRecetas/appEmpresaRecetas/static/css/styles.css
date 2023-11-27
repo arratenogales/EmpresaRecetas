@@ -232,8 +232,9 @@ footer {
     height: 300px;
     padding: 5px;
     text-align: center;
+    margin:20px ;
     
-  }
+}
 
 #receta{
     text-align: center;
@@ -367,3 +368,9 @@ footer {
 #formulario-comentario2 button:hover {
     background-color: #2980b9;
   }
+#aaa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(182, 201, 182);
+}
