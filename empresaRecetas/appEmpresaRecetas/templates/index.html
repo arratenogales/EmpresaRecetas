@@ -25,6 +25,7 @@
     </div>
 	{% endfor %}
 <br>
+<div id="coment">
 <h3> Comentarios hechos por los seguidores sobre las recetas</h3>
 <div id="comentarios">
 <p><strong>unai@gmail.com:</strong> La receta de el pastel de zanahoria es maravillosa</p>
@@ -32,6 +33,9 @@
 <p><strong>laila@gmail.com:</strong> Los ingredientes del pescado al horno con verduras son faciles de conseguir y queda una receta muy rica. </p>
 <p><strong>juan@gmail.com:</strong> Un 10 a la tortilla de patata</p>
 <p><strong>emma@gmail.com:</strong> La receta de la tarta de manzana es maravillosa</p>
+<p><strong>maria@gmail.com:</strong> La textura que queda en el arroz con pollo te da una experiencia gastronimica increible. </p>
+<p><strong>lila@gmail.com:</strong> Increible la lasaña</p>
+<p><strong>jorge@gmail.com:</strong> Me ha encantado el flan</p>
 </div>
 <form id="formulario-comentario">
 	<label for="correo">Correo:</label>
@@ -40,6 +44,26 @@
 	<textarea id="comentario" rows="4" required></textarea>
 	<button type="button" onclick="agregarComentario()">Agregar Comentario</button>
   </form>
+  <h3>Peticiones de los seguidores sobre nuevas recetas</h3>
+  <div id="comentarios2">
+  <p><strong>imanol@gmail.com:</strong> ¡Hola a todos! Estoy desesperado por probar esos Sushi de Pizza Roll. ¿Alguien tiene la receta completa?</p>
+  <p><strong>jose@gmail.com:</strong> ¡Los Tacos de Helado Picante suenan intrigantes! ¿Alguien sabe cómo hacerlos en casa? ¡Necesito esa receta!</p>
+  <p><strong>ivan@gmail.com:</strong> He oído hablar del Pastel de Queso con Sabor a Lavanda, pero no puedo encontrar una buena receta. ¿Alguien tiene una?. </p>
+  <p><strong>cintia@gmail.com:</strong> Galletas de Ajo y Chocolate Blanco... suena extraño, ¡pero me intriga! ¿Cómo puedo hacerlas en casa?</p>
+  <p><strong>manuela@gmail.com:</strong> ¡Sopa de Fresas con Albóndigas de Albahaca suena fresca y deliciosa! ¿Alguien tiene la receta para compartir?</p>
+  <p><strong>gabi@gmail.com:</strong> Estoy intrigado por la Pasta de Calabaza con Salsa de Menta y Chocolate. ¿Alguien la ha probado? ¡Quiero la receta! </p>
+  <p><strong>susana@gmail.com:</strong> Un Batido de Espárragos y Mango... eso suena diferente. ¿Alguien tiene una receta comprobada?</p>
+  <p><strong>virginia@gmail.com:</strong> ¿Tarta de Limón con Crema de Guisantes Verdes? Nunca imaginé esa combinación. ¿Algún valiente con la receta?</p>
+  </div>
+  <form id="formulario-comentario2">
+	  <label for="correo">Correo:</label>
+	  <input type="email" id="correo" required>
+	  <label for="comentario">Comentario:</label>
+	  <textarea id="comentario" rows="4" required></textarea>
+	  <button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+	</form>
+	<br>
+   </div>
 </div>
 {% else %}
 <p>No hay recetas.</p>
