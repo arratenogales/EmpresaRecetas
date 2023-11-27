@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Group
+
+
+
+
+
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
     kcal = models.FloatField(default=0)
@@ -22,7 +28,7 @@ class Receta(models.Model):
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     def __str__(self):
         return self.nombre
-
+    
 class User(AbstractUser):
     nombre = models.CharField(max_length=25)
     apellidos = models.CharField(max_length=25)
@@ -30,7 +36,12 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     direccion = models.CharField(max_length=40)
     username = models.CharField(unique=True, max_length=20)
-
+    role = models.CharField(max_length=50)
+    ROLE_CHOICES = (
+        ('admin', 'Administrator'),
+        ('visitor', 'Visitor'),
+    )
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
   #  password = models.CharField(max_length=255)
     REQUIRED_FIELDS = ['email']
 
@@ -38,7 +49,18 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
-    
+
+
+can_view_dashboard = Permission.objects.get(codename='can_view_dashboard')
+can_manage_users = Permission.objects.get(codename='can_manage_users')
+
+admin_group, created = Group.objects.get_or_create(name='Admin')
+admin_group.permissions.add(can_view_dashboard)
+admin_group.permissions.add(can_manage_users)
+
+user = User.objects.get(username='ane')
+user.groups.add(admin_group)
+
 '''
 
 from django.contrib.auth.models import Group, Permission
