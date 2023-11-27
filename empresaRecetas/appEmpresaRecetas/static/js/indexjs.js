@@ -8,9 +8,8 @@ function agregarComentario() {
     }
 
     var nuevoComentario = document.createElement('p');
-    nuevoComentario.innerHTML = '<strong>' + correo + ':</strong> ' + comentario;
+    nuevoComentario.innerHTML = '<strong>' + correo + ':</strong> ' + comentario +'<em> (Este comentario esta aun pendiente de revisar y aceptar por el sistema)</em> ';
 
-  
     document.getElementById('comentarios').appendChild(nuevoComentario);
 
     document.getElementById('correo').value = '';

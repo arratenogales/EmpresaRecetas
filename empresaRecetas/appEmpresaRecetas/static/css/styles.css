@@ -248,6 +248,63 @@ footer {
     
   }
 
-  #thumbs p {
+#thumbs p {
     display: inline-block; 
+  }
+
+#comentarios {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+#comentarios p {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+#comentarios strong {
+    color: #3498db;
+  }
+  
+#comentarios em {
+    font-style: italic;
+  }
+  #formulario-comentario {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+#formulario-comentario label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+#formulario-comentario input,
+#formulario-comentario textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  
+#formulario-comentario button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+#formulario-comentario button:hover {
+    background-color: #2980b9;
   }
