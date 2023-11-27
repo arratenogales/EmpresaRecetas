@@ -1,12 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect,  get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 
-from django.shortcuts import get_object_or_404, get_list_or_404
+from .models import Receta, TipoPlato, Ingrediente,User, Permission
+from .forms import UsuarioForm
 
-from .models import Receta, TipoPlato, Ingrediente
-from django.shortcuts import redirect
-
-from django.contrib.auth.models import User, Permission
 from django.contrib.contenttypes.models import ContentType
 
 
@@ -14,7 +11,6 @@ def index(request):
     return HttpResponse("Recetas")
 
 
-from .forms import UsuarioForm
 
 """def show_formulario(request):
     return render(request, 'registro.html')
@@ -24,19 +20,25 @@ def show_formulario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid() and form.cleaned_data['Accept']:
-            nuevo_usuario = User(
+
+            email = form.cleaned_data['email']
+            if User.objects.filter(email=email).exists():
+                form.add_error('email', 'Este correo electrónico ya está registrado.')
+                return render(request, 'registro.html', {'form': form})
+
+            nuevo_usuario = User.objects.create_user(
                 nombre=form.cleaned_data['nombre'],
                 apellidos=form.cleaned_data['apellidos'],
-                email=form.cleaned_data['email'],
+                email=email,
                 edad=form.cleaned_data['edad'],
                 direccion=form.cleaned_data['direccion'],
-                usuario=form.cleaned_data['usuario'],
-                contraseña=form.cleaned_data['contraseña'],
+                username=form.cleaned_data['username'],
             )
+            nuevo_usuario.set_password(form.cleaned_data['password'])
             nuevo_usuario.save()
 
-            # intento de permisos para editar recetas
-            if request.user.is_authenticated: 
+            # intento de permisos para editar recetas (management/commands/permissions.py)
+            if request.user.is_authenticated and isinstance(nuevo_usuario, User):
                 content_type = ContentType.objects.get_for_model(Receta)
                 add_permission = Permission.objects.get(content_type=content_type, codename='add_receta')
                 change_permission = Permission.objects.get(content_type=content_type, codename='change_receta')
@@ -44,7 +46,12 @@ def show_formulario(request):
                 nuevo_usuario.user_permissions.add(add_permission, change_permission, delete_permission)
 
 
+            user = authenticate(username=form.cleaned_data['usuario'], password=form.cleaned_data['contraseña'])
+            login(request, user) #se supone que para que el usuario autenticado acceda a las vistas restringidas 
+                        
             return redirect('portada')
+
+
         else:
             form.add_error('Accept', 'Debes aceptar las condiciones para registrarte.')
 

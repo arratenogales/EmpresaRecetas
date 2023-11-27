@@ -23,17 +23,20 @@ class Receta(models.Model):
     def __str__(self):
         return self.nombre
 
-class User(models.Model):
-    nombre = models.CharField(max_length=255)
-    apellidos = models.CharField(max_length=255)
-    edad = models.IntegerField(max_length=20)
+class User(AbstractUser):
+    nombre = models.CharField(max_length=25)
+    apellidos = models.CharField(max_length=25)
+    edad = models.IntegerField()
     email = models.EmailField(unique=True)
-    direccion = models.CharField(max_length=255)
-    username = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+    direccion = models.CharField(max_length=40)
+    username = models.CharField(unique=True, max_length=20)
+
+  #  password = models.CharField(max_length=255)
+    REQUIRED_FIELDS = ['email']
+
 
     def __str__(self):
-        return self.nombre
+        return self.username
 
     
 '''
