@@ -1,6 +1,7 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% block java %}<script src="{% static 'js/indexjs.js' %}"></script> {% endblock %}
 {% block titulo %}Listado de recetas{% endblock %}
 {% block contenido %}
 <main>
@@ -23,6 +24,18 @@
 	</ul>
     </div>
 	{% endfor %}
+<br>
+<h3> Comentarios hechos por los reguidores sobre las recetas</h3>
+<div id="comentarios">
+<p><strong>unai@gmail.com:</strong> La receta de el pastel de zanahoria es maravillosa</p>
+</div>
+<form id="formulario-comentario">
+	<label for="correo">Correo:</label>
+	<input type="email" id="correo" required>
+	<label for="comentario">Comentario:</label>
+	<textarea id="comentario" rows="4" required></textarea>
+	<button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+  </form>
 </div>
 {% else %}
 <p>No hay recetas.</p>
