@@ -222,6 +222,7 @@ footer {
     margin: 0 auto; 
 }
 
+
 #imagen-seleccionada {
     border: solid 1px #ccc;
     width: 430px;
@@ -231,7 +232,7 @@ footer {
 
  
 
-  li img {
+  #thumbs img {
     width: 150px;
     height: 100px;
    
@@ -242,6 +243,6 @@ footer {
     
   }
 
-  #thumbs{
+  #thumbs p {
     display: inline-block; 
   }
