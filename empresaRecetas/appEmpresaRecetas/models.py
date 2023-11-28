@@ -31,14 +31,25 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     direccion = models.CharField(max_length=40)
     username = models.CharField(unique=True, max_length=20)
+    role = models.CharField(max_length=20, default='user')
   #  password = models.CharField(max_length=255)
     REQUIRED_FIELDS = ['email']
+    ROLE_CHOICES = (
+        ('admin', 'Administrator'),
+        ('visitor', 'Visitor'),
+    )
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
 
     def __str__(self):
         return self.username
 
 
+
+admin_group = Group.objects.create(name='Administradores')
+editor_group = Group.objects.create(name='Editores')
+admin_group.permissions.add(Permission.objects.get(codename='add_custommodel'))
+editor_group.permissions.add(Permission.objects.get(codename='change_custommodel'))
 
 
 '''
