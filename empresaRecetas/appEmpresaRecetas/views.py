@@ -1,22 +1,37 @@
 from django.shortcuts import render, redirect,  get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 
-from .models import Receta, TipoPlato, Ingrediente,User, Permission
-from .forms import UsuarioForm
+from .models import Receta, TipoPlato, Ingrediente, Pregunta
 from django.views.generic import ListView, DetailView
 
-from django.contrib.contenttypes.models import ContentType
+#from django.contrib.contenttypes.models import ContentType
 
 
 def index(request):
     return HttpResponse("Recetas")
 
+def show_formulario(request):
+    return render(request, 'formulario.html')
 
 
-"""def show_formulario(request):
-    return render(request, 'registro.html')
+def show_formulario(request):
+    if request.method == 'POST':
+        formulario = Pregunta(request.POST)
+        if formulario.is_valid():
+            pregunta_texto = formulario.cleaned_data['pregunta']
+            email = formulario.cleaned_data['email']
+
+            # Guardar en el modelo
+            nueva_pregunta = Pregunta(pregunta_texto=pregunta_texto, email=email)
+            nueva_pregunta.save()
+
+            return redirect('formulario') 
+    else:
+        formulario = Pregunta()
+
+    return render(request, 'formulario.html', {'formulario': formulario})
+
 """
-
 def show_formulario(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -62,7 +77,7 @@ def show_formulario(request):
 
     return render(request, 'registro.html', {'form': form})
 
-"""
+
 def post_usuario_form(request): 
     form = UsuarioForm(request.POST)
     if form.is_valid():
@@ -70,7 +85,11 @@ def post_usuario_form(request):
         nombre = form.cleaned_data['nombre']
         apellidos = form.cleaned_data['apellidos']        
         return HttpResponse(f"Registro exitoso. Bienvenid@ {nombre} {apellidos}")
+
+
+
 """
+
 
 def index_portada(request):
 
@@ -204,7 +223,7 @@ def show_tipo(request, tipo_id):
 """return HttpResponse(output)"""
 
 
-
+"""
 
 from django.contrib.auth import authenticate, login
 from .forms import InicioSesionForm
@@ -233,3 +252,5 @@ def iniciar_sesion(request):
 
 def show_writters(request):
     return render(request, 'writters.html')
+
+"""

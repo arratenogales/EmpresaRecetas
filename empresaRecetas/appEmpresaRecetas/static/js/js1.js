@@ -15,17 +15,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         enviarBoton.addEventListener('click', function() {
-            alert("Usuario registrado con éxito.");
+            alert("Pregunta enviada.");
 
         });
     }
 });
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("irDatos");
-
-    form.addEventListener("click", function() {
-        window.location.href = "/iniciar/";
-    });
-});

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block titulo %}Formulario de Inserción de Pregunta{% endblock %}
+
+{% block contenido %}
+
+    <form id="insertar_pregunta" action="{% url 'formulario' %}" method="post">
+        {% csrf_token %}
+
+        <h1>Haznos tus consultas </h1>
+        <p>Aqui puedes realizar la consulta que necesites:</p>
+
+        <fieldset>
+            <p>
+                <label>Pregunta: </label>
+                <textarea name="pregunta" rows="4" cols="50"></textarea>
+            </p>
+
+            <p>
+                <label>Tu Gmail: </label>
+                <input type="email" name="email">
+            </p>
+        </fieldset>
+
+        <input type="checkbox" id="Accept" name="Accept" value="Aceptar"> Acepto las condiciones<br><br>
+
+        <p>
+            <button type="submit" id="btnInsertarPregunta">Insertar Pregunta</button>
+        </p>
+    </form>
+
+{% endblock %}
+

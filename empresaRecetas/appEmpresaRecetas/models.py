@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Permission, Group
+#from django.contrib.auth.models import AbstractUser, Permission, Group
 
 
 class Ingrediente(models.Model):
@@ -23,7 +23,16 @@ class Receta(models.Model):
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
     def __str__(self):
         return self.nombre
+
+class Pregunta(models.Model):
+    pregunta = models.TextField()
+    email = models.EmailField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.pregunta
     
+"""   
 class User(AbstractUser):
     nombre = models.CharField(max_length=25)
     apellidos = models.CharField(max_length=25)
@@ -52,7 +61,7 @@ admin_group.permissions.add(Permission.objects.get(codename='add_custommodel'))
 editor_group.permissions.add(Permission.objects.get(codename='change_custommodel'))
 
 
-'''
+
 
 from django.contrib.auth.models import Group, Permission
 from django.contrib import admin
@@ -123,4 +132,6 @@ class Person(models.Model):
         )
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'colored_name')'''
+    list_display = ('first_name', 'last_name', 'colored_name')
+
+"""    

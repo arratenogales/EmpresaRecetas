@@ -24,7 +24,7 @@ urlpatterns = [
     path('ingrediente/<int:ingrediente_id>/',  views.ImgredienteDetailView.as_view, name='ingrediente'),
     path('tipo/<int:tipo_id>/',  views.TipoDetailView.as_view, name='tipo'),
 
-    path('registrar/', views.show_formulario, name='registrar')
+    path('formulario/', views.show_formulario, name='formulario')
 
 ]
 

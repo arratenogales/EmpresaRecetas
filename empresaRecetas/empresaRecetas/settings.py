@@ -144,5 +144,4 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-AUTH_USER_MODEL = 'appEmpresaRecetas.User'
 
