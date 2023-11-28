@@ -144,4 +144,4 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-
+AUTH_USER_MODEL = 'tu_app.CustomUser'

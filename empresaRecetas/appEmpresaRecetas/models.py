@@ -1,5 +1,7 @@
 from django.db import models
-#from django.contrib.auth.models import AbstractUser, Permission, Group
+from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import Permission, Group
+from django.utils.translation import gettext_lazy as _
 
 
 class Ingrediente(models.Model):
@@ -45,7 +47,38 @@ class Pregunta(models.Model):
     def __str__(self):
         return f'{self.nombreReceta} - {self.nombre} {self.apellido}'
 
-    
+
+class CustomUser(AbstractUser):
+    nombre = models.CharField(max_length=50 )
+    apellido = models.CharField(max_length=50 )
+    usuario = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    ROLE_CHOICES = (
+        ('admin', 'Administrador'),
+        ('editor', 'Editor'),
+        ('user', 'Usuario'),
+    )
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+    groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='customuser_set')
+    user_permissions = models.ManyToManyField(Permission, verbose_name=_('user permissions'), blank=True, related_name='customuser_set')
+'''
+class UserProfile(AbstractUser):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=50 )
+    apellido = models.CharField(max_length=50 )
+    usuario = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    role = models.CharField(max_length=10, choices=(
+        ('admin', 'Administrador'),
+        ('editor', 'Editor'),
+        ('user', 'Usuario'),
+    ), default='user')
+
+    def __str__(self):
+        return self.user.username
+'''
 """   
 class User(AbstractUser):
     nombre = models.CharField(max_length=25)
