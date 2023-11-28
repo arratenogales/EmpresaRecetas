@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import User
+#from django.contrib.auth.admin import UserAdmin
+#from .models import User
 from .models import Receta, Ingrediente, TipoPlato
 '''from .models import Pregunta
 from .models import Writer, Reader, Role
@@ -28,12 +28,15 @@ class MyAdminSite(admin.AdminSite):
 admin_site = MyAdminSite(name="admin")
 '''
 
+'''
 
 class UserAdmin(UserAdmin):
     # Personaliza la visualización de usuarios en el panel de administración
     list_display = ('nombre', 'email', 'username', 'role')
 
 admin.site.register(User, UserAdmin)
+
+'''
 
 admin.site.register(Receta)
 admin.site.register(Ingrediente)
