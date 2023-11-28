@@ -24,13 +24,27 @@ class Receta(models.Model):
     def __str__(self):
         return self.nombre
 
+
 class Pregunta(models.Model):
-    pregunta = models.TextField()
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     email = models.EmailField()
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    
+    nombreReceta = models.CharField(max_length=100)
+    TIPO_CHOICES = [
+        ('Entrante', 'Entrante'),
+        ('Primero', 'Primero'),
+        ('Segundo', 'Segundo'),
+        ('Postre', 'Postre'),
+    ]
+    tipo = models.CharField(max_length=100, choices=TIPO_CHOICES)
+    tiempo = models.TimeField()
+    detalle = models.TextField()
+    accept = models.BooleanField()
 
     def __str__(self):
-        return self.pregunta
+        return f'{self.nombreReceta} - {self.nombre} {self.apellido}'
+
     
 """   
 class User(AbstractUser):

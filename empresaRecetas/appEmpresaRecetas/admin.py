@@ -1,7 +1,7 @@
 from django.contrib import admin
 #from django.contrib.auth.admin import UserAdmin
 #from .models import User
-from .models import Receta, Ingrediente, TipoPlato
+from .models import Receta, Ingrediente, TipoPlato, Pregunta
 '''from .models import Pregunta
 from .models import Writer, Reader, Role
 
@@ -41,6 +41,7 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Receta)
 admin.site.register(Ingrediente)
 admin.site.register(TipoPlato)
+admin.site.register(Pregunta)
 
 '''
 

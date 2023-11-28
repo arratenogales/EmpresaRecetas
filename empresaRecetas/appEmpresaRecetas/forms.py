@@ -1,5 +1,9 @@
 from django import forms
 
-class Pregunta(forms.Form):
-    pregunta = forms.CharField(label = "pregunta", max_length=300)
-    email = forms.EmailField(label = "Email", required = True)
+from .models import Pregunta
+
+class RecetaForm(forms.ModelForm):
+    class Meta:
+        model = Pregunta
+        fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'tipo', 'tiempo', 'detalle', 'accept']
+

@@ -4,28 +4,56 @@
 
 {% block contenido %}
 
-    <form id="insertar_pregunta" action="{% url 'formulario' %}" method="post">
+    <form id="irFormulario" action="{% url 'formulario' %}" method="post">
         {% csrf_token %}
 
-        <h1>Haznos tus consultas </h1>
-        <p>Aqui puedes realizar la consulta que necesites:</p>
+        <h1>¡Envianos tus recetas!</h1>
+        <p>Aqui puedes enviarnos tus recetas para que las añadamos a la pagina web y que otros usuarios puedan disfrutar de ellas:</p>
 
         <fieldset>
-            <p>
-                <label>Pregunta: </label>
-                <textarea name="pregunta" rows="4" cols="50"></textarea>
-            </p>
+            <legend>Tus datos:</legend>
 
-            <p>
-                <label>Tu Gmail: </label>
-                <input type="email" name="email">
-            </p>
+            <label>Nombre </label>
+            <input type="text" name="nombre"><br>
+
+            <label>Apellidos </label>
+            <input type="text" name="apellido"><br>
+
+
+            <label>Correo electronico </label>
+            <input type="email" name="email"><br>
+            
         </fieldset>
 
-        <input type="checkbox" id="Accept" name="Accept" value="Aceptar"> Acepto las condiciones<br><br>
+        <fieldset>
+            <legend>Datos de la receta:</legend>
+
+            <label>Nombre </label>
+            <input type="text" name="nombreReceta"><br>
+
+            <label>Tipo </label>
+            <select id="tipo" name="tipo"> 
+                <option>Entrante</option>
+                <option selected>Primero</option>
+                <option>Segundo</option>
+                <option>Postre</option>
+
+                
+            </select>
+
+            <P>Selecciona el tiempo requerido para hacer la receta:</P>
+            <input type="time" name="time"><br>
+
+
+            <label>Algun detalle necesario para llebvar a cabo la receta: </label>
+            <textarea name="detalle" rows="4" cols="50"></textarea>
+        </fieldset>
+
+
+        <input type="checkbox" id="Accept" name="accept" value="Aceptar">Acepto las condiciones<br><br>
 
         <p>
-            <button type="submit" id="btnInsertarPregunta">Insertar Pregunta</button>
+            <button type="submit" id="btnRegis">Insertar Pregunta</button>
         </p>
     </form>
 

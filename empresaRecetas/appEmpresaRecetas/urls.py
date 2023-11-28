@@ -13,8 +13,8 @@ urlpatterns = [
     path('ingrediente/', views.IndexIngredientesListView.as_view, name='index_ingrediente'),
     path('tipo/', views.IndexTiposListView.as_view, name='index_tipo'),
 
-    path('iniciar_sesion/', views.iniciar_sesion, name='iniciar_sesion'),
-    path('writters/', views.show_writters, name='writters'),
+    #path('iniciar_sesion/', views.iniciar_sesion, name='iniciar_sesion'),
+    #path('writters/', views.show_writters, name='writters'),
 
     #path('receta/<int:receta_id>/', views.show_receta, name='receta'),
     #path('ingrediente/<int:ingrediente_id>/', views.show_ingrediente, name='ingrediente'),

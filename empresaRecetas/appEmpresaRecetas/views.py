@@ -10,21 +10,16 @@ from django.views.generic import ListView, DetailView
 def index(request):
     return HttpResponse("Recetas")
 
+"""
 def show_formulario(request):
     return render(request, 'formulario.html')
 
-
+"""
 def show_formulario(request):
     if request.method == 'POST':
         formulario = Pregunta(request.POST)
         if formulario.is_valid():
-            pregunta_texto = formulario.cleaned_data['pregunta']
-            email = formulario.cleaned_data['email']
-
-            # Guardar en el modelo
-            nueva_pregunta = Pregunta(pregunta_texto=pregunta_texto, email=email)
-            nueva_pregunta.save()
-
+            formulario.save()
             return redirect('formulario') 
     else:
         formulario = Pregunta()

@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     var formulario = document.getElementById('irFormulario');
 
-    var aceptar = document.getElementById('Accept');
+    var aceptar = document.getElementById('accept');
     var enviarBoton = document.getElementById('btnRegis');
 
     if (enviarBoton && aceptar) {
