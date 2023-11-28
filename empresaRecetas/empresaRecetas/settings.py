@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appEmpresaRecetas'
+    
 ]
 
 MIDDLEWARE = [
@@ -144,4 +145,4 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
 ]
 
-AUTH_USER_MODEL = 'tu_app.CustomUser'
+#AUTH_USER_MODEL = 'tu_app.CustomUser'

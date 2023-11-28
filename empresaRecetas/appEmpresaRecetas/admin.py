@@ -9,6 +9,14 @@ from .models import Receta, Ingrediente, TipoPlato, Pregunta
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'nombre', 'apellido', 'get_role_display')
 
+    def nombre(self, obj):
+        return obj.nombre
+    nombre.short_description = _('Nombre')
+
+    def apellido(self, obj):
+        return obj.apellido
+    apellido.short_description = _('Apellido')
+
     def get_role_display(self, obj):
         return obj.role
     get_role_display.short_description = _('Role')

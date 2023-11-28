@@ -28,21 +28,24 @@ class Receta(models.Model):
 
 
 class Pregunta(models.Model):
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, default='')
+    apellido = models.CharField(max_length=100, default='')
     email = models.EmailField()
     
-    nombreReceta = models.CharField(max_length=100)
+    nombreReceta = models.CharField(max_length=100, default='')
+    ingredientes= models.CharField(max_length=500, default='')
     TIPO_CHOICES = [
         ('Entrante', 'Entrante'),
         ('Primero', 'Primero'),
         ('Segundo', 'Segundo'),
         ('Postre', 'Postre'),
     ]
-    tipo = models.CharField(max_length=100, choices=TIPO_CHOICES)
-    tiempo = models.TimeField()
-    detalle = models.TextField()
-    accept = models.BooleanField()
+    tipo = models.CharField(max_length=100, choices=TIPO_CHOICES, default='')
+    tiempo = models.IntegerField(default=0)
+
+
+    detalle = models.TextField(default='')
+    accept = models.BooleanField(default= False)
 
     def __str__(self):
         return f'{self.nombreReceta} - {self.nombre} {self.apellido}'

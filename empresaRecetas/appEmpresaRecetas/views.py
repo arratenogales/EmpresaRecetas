@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect,  get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 
-from .models import Receta, TipoPlato, Ingrediente, Pregunta
+from .models import Receta, TipoPlato, Ingrediente
+from .forms import RecetaForm
 from django.views.generic import ListView, DetailView
 
 #from django.contrib.contenttypes.models import ContentType
@@ -17,12 +18,12 @@ def show_formulario(request):
 """
 def show_formulario(request):
     if request.method == 'POST':
-        formulario = Pregunta(request.POST)
+        formulario = RecetaForm(request.POST)
         if formulario.is_valid():
             formulario.save()
             return redirect('formulario') 
     else:
-        formulario = Pregunta()
+        formulario = RecetaForm()
 
     return render(request, 'formulario.html', {'formulario': formulario})
 
