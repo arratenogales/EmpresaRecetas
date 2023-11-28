@@ -145,3 +145,4 @@ LOCALE_PATHS = [
 ]
 
 AUTH_USER_MODEL = 'appEmpresaRecetas.User'
+
