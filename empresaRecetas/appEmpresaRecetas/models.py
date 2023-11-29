@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.contrib.auth.models import Permission, Group
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Ingrediente(models.Model):
@@ -51,6 +53,7 @@ class Pregunta(models.Model):
         return f'{self.nombreReceta} - {self.nombre} {self.apellido}'
 
 
+'''
 class CustomUser(AbstractUser):
     nombre = models.CharField(max_length=50 )
     apellido = models.CharField(max_length=50 )
@@ -66,6 +69,29 @@ class CustomUser(AbstractUser):
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
     groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='customuser_set')
     user_permissions = models.ManyToManyField(Permission, verbose_name=_('user permissions'), blank=True, related_name='customuser_set')
+'''
+
+
+@receiver(post_save, sender=User)
+def assign_reader_group(sender, instance, created, **kwargs):
+    if created:
+        # Define los roles y permisos correspondientes
+        reader_permissions = [
+            'view_receta',
+            'view_ingrediente',
+            'view_tipo_plato',
+        ]
+
+        # Asigna el usuario al grupo correspondiente
+        reader_group, created = Group.objects.get_or_create(name='ReadersRecetas')
+        instance.groups.add(reader_group)
+
+        # Asigna permisos al usuario
+        for permission_codename in reader_permissions:
+            permission = Permission.objects.get(codename=permission_codename)
+            instance.user_permissions.add(permission)
+
+
 '''
 class UserProfile(AbstractUser):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

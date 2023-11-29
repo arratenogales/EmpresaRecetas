@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group, Permission, User
 from django.utils.translation import gettext_lazy as _
 from .models import Receta, Ingrediente, TipoPlato, Pregunta
 
-
+'''
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'nombre', 'apellido', 'get_role_display')
 
@@ -24,19 +24,32 @@ class CustomUserAdmin(UserAdmin):
 # Registrar el modelo de usuario por defecto y la clase de administración
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+'''
 admin.site.register(Permission)
 
 
 # Crear grupos y asignar permisos
-admin_group, created = Group.objects.get_or_create(name='Administradores')
-editor_group, created = Group.objects.get_or_create(name='Editores')
+admin_group, created = Group.objects.get_or_create(name='AdminsRecetas')
+reader_group, created = Group.objects.get_or_create(name='ReadersRecetas')
+
+change_receta_permission = Permission.objects.get(codename='change_receta')
+change_ingrediente_permission = Permission.objects.get(codename='change_ingrediente')
+change_tipo_plato_permission = Permission.objects.get(codename='change_tipoplato')
+
+view_receta_permission = Permission.objects.get(codename='view_receta')
+view_ingrediente_permission = Permission.objects.get(codename='view_ingrediente')
+view_tipo_plato_permission = Permission.objects.get(codename='view_tipoplato')
+
+admin_group.permissions.add(change_receta_permission, change_ingrediente_permission, change_tipo_plato_permission)
+reader_group.permissions.add(view_receta_permission, view_ingrediente_permission, view_tipo_plato_permission)
 
 
-# Asignar permisos a los grupos
-# Ejemplo: Asignar permiso para cambiar usuarios
-admin_group.permissions.add(
-    Permission.objects.get(codename='change_user')
-)
+#dos ejemplos admins
+User.objects.get(username='ane').groups.add(admin_group)
+User.objects.get(username='adminRecetas').groups.add(admin_group)
+
+#dos ejemplos lectores
+User.objects.get(username='lectorprueba1').groups.add(reader_group)
 
 
 
