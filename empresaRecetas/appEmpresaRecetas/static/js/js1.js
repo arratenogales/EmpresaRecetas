@@ -2,7 +2,7 @@
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    var formulario = document.getElementById('irFormulario');
+    var formulario = document.getElementById('miFormulario');
 
     var aceptar = document.getElementById('accept');
     var enviarBoton = document.getElementById('btnRegis');
@@ -15,8 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         enviarBoton.addEventListener('click', function() {
-            alert("Pregunta enviada.");
+            console.log("Botón de envío clicado");
 
+            if (aceptar.checked) {
+                console.log("Enviando formulario...");
+
+                formulario.submit();
+            } else {
+                alert("Debes aceptar las condiciones para enviar el formulario.");
+            }
         });
     }
 });

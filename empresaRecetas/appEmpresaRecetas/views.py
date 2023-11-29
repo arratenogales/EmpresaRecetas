@@ -11,17 +11,11 @@ from django.views.generic import ListView, DetailView
 def index(request):
     return HttpResponse("Recetas")
 
-"""
-def show_formulario(request):
-    return render(request, 'formulario.html')
 
-"""
 def show_formulario(request):
     if request.method == 'POST':
         formulario = RecetaForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('formulario') 
+        formulario.save()
     else:
         formulario = RecetaForm()
 

@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-    <form id="irFormulario" action="{% url 'formulario' %}" method="post">
+    <form id="miFormulario" action="{% url 'formulario' %}" method="post">
         {% csrf_token %}
 
         <h1>¡Envianos tus recetas!</h1>
@@ -48,15 +48,15 @@
             <input type="number" name="tiempo"><br>
 
 
-            <label>Algun detalle necesario para llebvar a cabo la receta: </label>
+            <label>Algun detalle necesario para llevar a cabo la receta: </label>
             <textarea name="detalle" rows="4" cols="50"></textarea>
         </fieldset>
 
 
-        <input type="checkbox" id="Accept" name="accept" value="Aceptar">Acepto las condiciones<br><br>
+        <input type="checkbox" id="accept" name="accept" value="Aceptar">Acepto las condiciones<br><br>
 
         <p>
-            <button type="submit" id="btnRegis">Insertar Pregunta</button>
+        <button type="button" id="btnRegis">Insertar Receta</button>
         </p>
     </form>
 
