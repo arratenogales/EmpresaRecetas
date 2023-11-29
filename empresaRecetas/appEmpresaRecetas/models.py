@@ -41,7 +41,7 @@ class Pregunta(models.Model):
         ('Postre', 'Postre'),
     ]
     tipo = models.CharField(max_length=100, choices=TIPO_CHOICES, default='')
-    tiempo = models.IntegerField(default=0)
+    tiempo = models.IntegerField( default=0)
 
 
     detalle = models.TextField(default='')
@@ -61,7 +61,7 @@ class CustomUser(AbstractUser):
         ('editor', 'Editor'),
         ('user', 'Usuario'),
     )
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
+    #role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
     groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='customuser_set')

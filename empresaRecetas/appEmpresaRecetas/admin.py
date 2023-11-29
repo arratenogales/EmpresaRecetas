@@ -24,18 +24,19 @@ class CustomUserAdmin(UserAdmin):
 # Registrar el modelo de usuario por defecto y la clase de administración
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(Permission)
 
 
 # Crear grupos y asignar permisos
-#admin_group, created = Group.objects.get_or_create(name='Administradores')
-#editor_group, created = Group.objects.get_or_create(name='Editores')
+admin_group, created = Group.objects.get_or_create(name='Administradores')
+editor_group, created = Group.objects.get_or_create(name='Editores')
 
 
 # Asignar permisos a los grupos
 # Ejemplo: Asignar permiso para cambiar usuarios
-#admin_group.permissions.add(
-#    Permission.objects.get(codename='change_user')
-#)
+admin_group.permissions.add(
+    Permission.objects.get(codename='change_user')
+)
 
 
 
