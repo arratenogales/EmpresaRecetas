@@ -7,6 +7,7 @@ class AppEmpresaRecetasConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'appEmpresaRecetas'
 
+
     
 '''
     def ready(self):

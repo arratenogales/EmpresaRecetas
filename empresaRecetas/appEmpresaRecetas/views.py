@@ -134,7 +134,21 @@ def index_ingredientes(request):
 	context = {'lista_ingredientes': ingredientes }
 	"""return HttpResponse(output)"""
 	return render(request, 'ingredientes.html', context)
+from django.http import JsonResponse
 
+
+def agregar_comentario(request):
+    if request.method == 'POST':
+        correo = request.POST.get('correo')
+        comentario = request.POST.get('comentario')
+
+        if correo and comentario:
+            comentario = Comentario(correo=correo, comentario=comentario)
+            comentario.save()
+
+            return JsonResponse({'mensaje': 'Comentario agregado con éxito.'})
+
+    return JsonResponse({'mensaje': 'Error al agregar el comentario.'},correo, status=400)
 
 
 # Vista basada en clases en todas las funcionalidades básicas (listado de los tipos).
