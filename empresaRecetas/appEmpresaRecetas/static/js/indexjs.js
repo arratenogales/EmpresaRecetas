@@ -14,24 +14,24 @@ function agregarComentario() {
     document.getElementById('correo').value = '';
     document.getElementById('comentario').value = '';
     
+    nuevocom={
+      correo:correo,comentario:comentario
+    }
     
-    
-      // Envía el comentario al servidor utilizando Fetch API o XMLHttpRequest
-      fetch('/agregar_comentario/', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              'X-CSRFToken': getCookie('csrftoken'),  // Asegúrate de incluir el token CSRF
-          },
-          body: `correo=${encodeURIComponent(correo)}&texto=${encodeURIComponent(comentario)}`,
-      })
-      .then(response => response.json())
-      .then(data => {
-          alert(data.mensaje);  // Puedes manejar la respuesta del servidor como desees
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+    fetch('/agregar_comentario/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(nuevocom)
+  })
+  .then(response => response.json())
+  .then(data => {
+      alert(data.mensaje);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
   }
 
   
