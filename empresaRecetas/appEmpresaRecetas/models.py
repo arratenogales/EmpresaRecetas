@@ -13,7 +13,12 @@ class Ingrediente(models.Model):
     def __str__(self):
         return self.nombre
     
-
+class Comentario(models.Model):
+    correo = models.EmailField()
+    comentario = models.CharField(max_length=500)
+    def __str__(self):
+        return self.correo
+    
 class TipoPlato(models.Model):
     nombre = models.CharField(max_length=50)
     def __str__(self):

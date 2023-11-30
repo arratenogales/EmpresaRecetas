@@ -8,7 +8,7 @@ urlpatterns = [
     #path('receta/', views.index_recetas, name='index_recetas'),
     #path('ingrediente/', views.index_ingredientes, name='index_ingrediente'),
     #path('tipo/', views.index_tipos, name='index_tipo'),
-
+    path('comentario/', views.index_comentarios, name='index_comentarios'),
     path('receta/', views.IndexRecetasListView.as_view, name='index_recetas'),
     path('ingrediente/', views.IndexIngredientesListView.as_view, name='index_ingrediente'),
     path('tipo/', views.IndexTiposListView.as_view, name='index_tipo'),

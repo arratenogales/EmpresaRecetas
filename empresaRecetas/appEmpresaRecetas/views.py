@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect,  get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 
-from .models import Receta, TipoPlato, Ingrediente
+from .models import Receta, TipoPlato, Ingrediente, Comentario
 from .forms import RecetaForm
 from django.views.generic import ListView, DetailView
 
@@ -104,6 +104,13 @@ def index_recetas(request):
 	recetas = get_list_or_404(Receta.objects.order_by('nombre'))
 	"""output = ', '.join([d.nombre for d in recetas])"""
 	context = {'lista_recetas': recetas }
+	"""return HttpResponse(output)"""
+	return render(request, 'index.html', context)
+
+def index_comentarios(request):
+	comentarios = get_list_or_404(Comentario.objects.order_by('correo'))
+	"""output = ', '.join([d.nombre for d in recetas])"""
+	context = {'lista_recetas': comentarios }
 	"""return HttpResponse(output)"""
 	return render(request, 'index.html', context)
 

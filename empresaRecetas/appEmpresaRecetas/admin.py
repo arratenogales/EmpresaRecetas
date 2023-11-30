@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 #from .models import UserProfile
 from django.contrib.auth.models import Group, Permission, User
 from django.utils.translation import gettext_lazy as _
-from .models import Receta, Ingrediente, TipoPlato, Pregunta
+from .models import Receta, Ingrediente, TipoPlato, Pregunta,Comentario
 
 '''
 class CustomUserAdmin(UserAdmin):
@@ -93,7 +93,7 @@ admin.site.register(Receta)
 admin.site.register(Ingrediente)
 admin.site.register(TipoPlato)
 admin.site.register(Pregunta)
-
+admin.site.register(Comentario)
 '''
 
 admin.site.register(Pregunta, BaseAdmin)
