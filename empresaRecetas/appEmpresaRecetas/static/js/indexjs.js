@@ -13,5 +13,10 @@ function agregarComentario() {
     document.getElementById('comentarios').appendChild(nuevoComentario);
     document.getElementById('correo').value = '';
     document.getElementById('comentario').value = '';
+    
+    if (correo && comentario) {
+      const nuevoComentario = new ComentarioModelo(correo, comentario);
+      
+    }
   }
 
