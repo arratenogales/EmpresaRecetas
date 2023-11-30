@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   thumbs.forEach(function(thumb) {
     thumb.addEventListener('click', function() {
-      variable= document.getElementById('imagen-seleccionada').src;
+      var variable= document.getElementById('imagen-seleccionada').src;
+      var variable2= document.getElementById('imagen-seleccionada').alt;
       document.getElementById('imagen-seleccionada').src = this.src;
       recetaElement.textContent = this.alt;
       this.src=variable;
-      variable2= document.getElementById('imagen-seleccionada').alt;
-      document.getElementById('imagen-seleccionada').alt=this.src;
+
+      document.getElementById('imagen-seleccionada').alt=this.alt;
       this.alt=variable2;
       
     });
