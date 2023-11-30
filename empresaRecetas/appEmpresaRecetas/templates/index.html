@@ -46,6 +46,7 @@
   </form>
  
   <button type="button" onclick="toggleComentarios()" id="b">Mostrar/Ocultar Comentarios</button>
+  <div id="general">
   <div id="comentarios2">
 	<h3>Peticiones de los seguidores sobre nuevas recetas</h3>
   <p><strong>imanol@gmail.com:</strong> ¡Hola a todos! Estoy desesperado por probar esos Sushi de Pizza Roll. ¿Alguien tiene la receta completa?</p>
@@ -65,8 +66,11 @@
 	  <button type="button" onclick="agregarComentario()">Agregar Comentario</button>
 	</form>
 	<br>
+     </div>
    </div>
+    
 </div>
+
 {% else %}
 <p>No hay recetas.</p>
 {% endif %}

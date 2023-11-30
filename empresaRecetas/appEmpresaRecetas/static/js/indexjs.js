@@ -17,10 +17,11 @@ function agregarComentario() {
 
 
 function toggleComentarios() {
-    var comentariosDiv = document.getElementById("comentarios2");
-    var boton = document.getElementById("comentarios2");
+    alert("Comentarios");
+    var comentariosDiv = document.getElementById("general");
+    var boton = document.getElementById("b");
 
-    if (comentariosDiv.style.display === "none") {
+    if (comentariosDiv.style.display === "none" || comentariosDiv.style.display === "") {
       comentariosDiv.style.display = "block";
       boton.textContent = "Ocultar Comentarios";
     } else {
