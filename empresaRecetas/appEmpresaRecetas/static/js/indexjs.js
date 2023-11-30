@@ -15,17 +15,3 @@ function agregarComentario() {
     document.getElementById('comentario').value = '';
   }
 
-
-function toggleComentarios() {
-    alert("Comentarios");
-    var comentariosDiv = document.getElementById("general");
-    var boton = document.getElementById("b");
-
-    if (comentariosDiv.style.display === "none" || comentariosDiv.style.display === "") {
-      comentariosDiv.style.display = "block";
-      boton.textContent = "Ocultar Comentarios";
-    } else {
-      comentariosDiv.style.display = "none";
-      boton.textContent = "Mostrar Comentarios";
-    }
-  }
