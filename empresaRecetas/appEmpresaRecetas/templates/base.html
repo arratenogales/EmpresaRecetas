@@ -7,8 +7,7 @@
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         <script src="{% static 'js/js1.js' %}"></script> 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="{% static 'js/vue.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
 
 
         {% block java %} {% endblock %}
@@ -38,11 +37,15 @@
         </div>
 <br>
         </header> 
-        <div id="app"></div>
+
+        
 
         {% block contenido %}{% endblock %}
         <footer>
             <div class="footer-section">
+                <div id="app">
+                    {{ message }}
+                </div>
                 <h2>Contacto</h2>
                 <p><strong>Email:</strong> recipestore@gmail.com</p>
                 <p><strong>Teléfono:</strong> 787888886</p>
