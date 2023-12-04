@@ -1,30 +1,48 @@
 from django.contrib import admin
+from django import forms
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.admin import UserAdmin
 #from .models import UserProfile
 from django.contrib.auth.models import Group, Permission, User
 from django.utils.translation import gettext_lazy as _
 from .models import Receta, Ingrediente, TipoPlato, Pregunta,Comentario
 
+
 '''
+class CustomUserCreationForm(UserCreationForm):
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+
+    class Meta:
+        model = User
+        fields = UserCreationForm.Meta.fields + ('group',)
+
+
+
+class CustomUserChangeForm(UserChangeForm):
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)
+
+    class Meta:
+        model = User
+        fields = UserChangeForm.Meta.fields + ('group',)
+
+
 class CustomUserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'nombre', 'apellido', 'get_role_display')
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
 
-    def nombre(self, obj):
-        return obj.nombre
-    nombre.short_description = _('Nombre')
-
-    def apellido(self, obj):
-        return obj.apellido
-    apellido.short_description = _('Apellido')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'get_role_display')
 
     def get_role_display(self, obj):
-        return obj.role
-    get_role_display.short_description = _('Role')
+        groups = ', '.join([group.name for group in obj.groups.all()])
+        return groups
+    get_role_display.short_description = _('Groups')
 
-# Registrar el modelo de usuario por defecto y la clase de administración
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+
 '''
+
+
 admin.site.register(Permission)
 
 
