@@ -41,7 +41,7 @@
 	
 		{% csrf_token %}
 		{{form}}
-	   <input type="submit" value="Submit" />
+	   <input type="submit" value="Submit" onclick="agregarComentario()"/>
 	   <label for="comentario">Comentario: </label>
        <input id="comentario" type="text" name="comentario" maxlength="600" required rows="4">
        <label for="email">Introduce tu email: </label>
