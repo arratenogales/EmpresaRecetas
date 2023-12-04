@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import Receta, Ingrediente, TipoPlato, Pregunta,Comentario
 
 
+
 '''
 class CustomUserCreationForm(UserCreationForm):
     group = forms.ModelChoiceField(queryset=Group.objects.all(), required=True)

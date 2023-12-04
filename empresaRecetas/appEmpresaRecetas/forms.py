@@ -9,3 +9,6 @@ class RecetaForm(forms.ModelForm):
         fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'ingredientes', 'tipo', 'tiempo', 'detalle', 'accept']
 
 
+class ComForm(forms.Form):
+ comentario = forms.CharField(label='Introduce tu comentario', max_length=600)
+ email = forms.EmailField(label='Introduce tu email', max_length=20)
