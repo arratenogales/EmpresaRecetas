@@ -37,19 +37,19 @@
 <p><strong>lila@gmail.com:</strong> Increible la lasaña</p>
 <p><strong>jorge@gmail.com:</strong> Me ha encantado el flan</p>
 </div>
-<form id="formulario-comentario" method="post">
+<form id="formulario-comentario" method="post" action="{% url 'form' %}">
 	
-		{% csrf_token %}
-		{{form}}
-	   <input type="submit" value="Submit" onclick="agregarComentario()"/>
-	   <label for="comentario">Comentario: </label>
-       <input id="comentario" type="text" name="comentario" maxlength="600" required rows="4">
-       <label for="email">Introduce tu email: </label>
-        <input id="email" type="text" name="email" maxlength="20" required>
-		<button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+	{% csrf_token %}
+	{{form}}
+	<input type="submit" value="Submit" />
+	<label for="comentario">Comentario: </label>
+    <input id="comentario" type="text" name="comentario" maxlength="600" required rows="4">
+    <label for="email">Introduce tu email: </label>
+    <input id="email" type="text" name="email" maxlength="20" required>
+		
 	   
 	
-  </form>
+</form>
  
   
   <div id="general">
@@ -65,11 +65,11 @@
   <p><strong>virginia@gmail.com:</strong> ¿Tarta de Limón con Crema de Guisantes Verdes? Nunca imaginé esa combinación. ¿Algún valiente con la receta?</p>
   </div>
   <form id="formulario-comentario2">
-	  <label for="correo">Correo:</label>
-	  <input type="email" id="correo" required>
-	  <label for="comentario">Comentario:</label>
-	  <textarea id="comentario" rows="4" required></textarea>
-	  <button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+	  <label for="correoq">Correo:</label>
+	  <input type="email" id="correoq" required>
+	  <label for="comentarioq">Comentario:</label>
+	  <textarea id="comentarioq" rows="4" required></textarea>
+	  <button type="button" onclick="agregarComentario()"> Agregar Comentario</button>
 	</form>
 	<br>
      </div>

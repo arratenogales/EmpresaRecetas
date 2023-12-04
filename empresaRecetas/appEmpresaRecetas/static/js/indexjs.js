@@ -1,6 +1,6 @@
 function agregarComentario() {
-    var correo = document.getElementById('correo').value;
-    var comentario = document.getElementById('comentario').value;
+    var correo = document.getElementById('correoq').value;
+    var comentario = document.getElementById('comentarioq').value;
 
     if (correo.trim() === '' || comentario.trim() === '') {
       alert('Por favor, ingrese tanto el correo como el comentario.');
@@ -10,28 +10,15 @@ function agregarComentario() {
     var nuevoComentario = document.createElement('p');
     nuevoComentario.innerHTML = '<strong>' + correo + ':</strong> ' + comentario +'<em> (Este comentario esta aun pendiente de revisar y aceptar por el sistema)</em> ';
 
-    document.getElementById('comentarios').appendChild(nuevoComentario);
-    document.getElementById('correo').value = '';
-    document.getElementById('comentario').value = '';
+    document.getElementById('comentarios2').appendChild(nuevoComentario);
+    document.getElementById('correoq').value = '';
+    document.getElementById('comentarioq').value = '';
     
     nuevocom={
       correo:correo,comentario:comentario
     }
     
-    fetch('/agregar_comentario/', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(nuevocom)
-  })
-  .then(response => response.json())
-  .then(data => {
-      alert(data.mensaje);
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
+    
   }
 
   

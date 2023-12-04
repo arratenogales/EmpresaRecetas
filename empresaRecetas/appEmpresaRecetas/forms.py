@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import Pregunta, Group, User
+from .models import Pregunta, Group, User, Comentario
 
 class RecetaForm(forms.ModelForm):
     class Meta:
@@ -9,6 +9,9 @@ class RecetaForm(forms.ModelForm):
         fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'ingredientes', 'tipo', 'tiempo', 'detalle', 'accept']
 
 
-class ComForm(forms.Form):
- comentario = forms.CharField(label='Introduce tu comentario', max_length=600)
- email = forms.EmailField(label='Introduce tu email', max_length=20)
+
+
+class ComForm(forms.ModelForm):
+    class Meta:
+        model = Comentario  
+        fields = ['correo','comentario']

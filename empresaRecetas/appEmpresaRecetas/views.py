@@ -266,20 +266,15 @@ def show_writters(request):
 
 """
 
+
+
 def loginform(request):
     if request.method == 'POST':
         form = ComForm(request.POST)
         if form.is_valid():
-            correo = form.cleaned_data['correo']
-            comentario_texto = form.cleaned_data['comentario']
-
-            # Crear una instancia del modelo Comentario con los datos del formulario
-            comentario = Comentario(correo=correo, comentario=comentario_texto)
-            comentario.save()
+            form.save()
+            redirect('index.html')
     else:
-        # Si la solicitud no es un POST, crea un formulario vacío
         form = ComForm()
 
-    # Renderizar la plantilla con el formulario
     return render(request, 'index.html', {'form': form})
-
