@@ -38,11 +38,17 @@
 <p><strong>jorge@gmail.com:</strong> Me ha encantado el flan</p>
 </div>
 <form id="formulario-comentario">
-	<label for="correo">Correo:</label>
-	<input type="email" id="correo" required>
-	<label for="comentario">Comentario:</label>
-	<textarea id="comentario" rows="4" required></textarea>
-	<button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+	
+		{% csrf_token %}
+		{{form}}
+	   <input type="submit" value="Submit" />
+	   <label for="comentario">Comentario: </label>
+       <input id="comentario" type="text" name="comentario" maxlength="600" required rows="4">
+       <label for="email">Introduce tu email: </label>
+        <input id="email" type="text" name="email" maxlength="20" required>
+		<button type="button" onclick="agregarComentario()">Agregar Comentario</button>
+	   
+	
   </form>
  
   

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect,  get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 
-from .models import Receta, TipoPlato, Ingrediente, Comentario
-from .forms import RecetaForm
+from .models import Receta, TipoPlato, Ingrediente
+from .forms import RecetaForm, Comentario
 from django.views.generic import ListView, DetailView
 
 #from django.contrib.contenttypes.models import ContentType

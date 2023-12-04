@@ -4,7 +4,7 @@ from django.contrib.auth.models import Permission, Group
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django import forms
 
 class Ingrediente(models.Model):
     nombre = models.CharField(max_length=50)
@@ -13,9 +13,11 @@ class Ingrediente(models.Model):
     def __str__(self):
         return self.nombre
     
-class Comentario(models.Model):
-    correo = models.EmailField()
-    comentario = models.CharField(max_length=500)
+class Comentario(forms.Form):
+    correo = forms.EmailField(label='Introduce tu email', max_length=20)
+
+    comentario = forms.CharField(label='Introduce tu comentario', max_length=600)
+
     def __str__(self):
         return self.correo
     
