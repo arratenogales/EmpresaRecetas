@@ -22,18 +22,15 @@ var appVue = new Vue({
       }
     },
     methods: {
-     aniadirContacto: function (contact) {
+      aniadirContacto: function (contact) {
         console.log('Añadiendo contacto:', contact);
-
+    
         this.contactos.push({
           name: contact.name,
           email: contact.email,
           phone: contact.phone
         });
         this.nuevoContacto = { name: '', email: '', phone: '' };
-      },
-      changeState: function (newState) {
-        this.state = newState;
       },
 
       removeContact: function(contact) {
