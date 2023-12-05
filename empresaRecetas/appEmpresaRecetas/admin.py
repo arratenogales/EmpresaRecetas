@@ -75,7 +75,7 @@ User.objects.get(username='lectorprueba1').groups.add(reader_group)
 '''from .models import Pregunta
 from .models import Writer, Reader, Role
 
-
+##hola es una prueba
 
 
 
