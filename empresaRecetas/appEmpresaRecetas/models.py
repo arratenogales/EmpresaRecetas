@@ -76,7 +76,7 @@ class CustomUser(AbstractUser):
     user_permissions = models.ManyToManyField(Permission, verbose_name=_('user permissions'), blank=True, related_name='customuser_set')
 '''
 
-
+'''
 @receiver(post_save, sender=User)
 def assign_reader_group(sender, instance, created, **kwargs):
     if created:
@@ -95,7 +95,7 @@ def assign_reader_group(sender, instance, created, **kwargs):
         for permission_codename in reader_permissions:
             permission = Permission.objects.get(codename=permission_codename)
             instance.user_permissions.add(permission)
-
+'''
 
 '''
 class UserProfile(AbstractUser):

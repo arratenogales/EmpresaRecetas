@@ -15,3 +15,11 @@ class ComForm(forms.ModelForm):
     class Meta:
         model = Comentario  
         fields = ['correo','comentario']
+
+
+class CustomUserCreationForm(UserCreationForm):
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), required=False)
+
+    class Meta:
+        model = User
+        fields = ('username', 'password1', 'password2', 'group')
