@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block titulo %}Formulario de Inserción de Pregunta{% endblock %}
+
+{% block contenido %}
+{% if comentarios %}
+	<h3>Comentarios de los seguidores sobre las recetas</h3>
+	<div id="comentarios">
+	  {% for comentario in comentarios %}
+		<p><strong>{{ comentario.correo }}:</strong> {{ comentario.comentario }}</p>
+	  {% endfor %}
+	</div>
+  {% else %}
+	<p>No hay comentarios</p>
+  {% endif %}
+   
+
+{% endblock %}

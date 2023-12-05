@@ -16,6 +16,7 @@ def show_formulario(request):
     if request.method == 'POST':
         formulario = RecetaForm(request.POST)
         formulario.save()
+#redurect        
     else:
         formulario = RecetaForm()
 
@@ -108,11 +109,9 @@ def index_recetas(request):
 	return render(request, 'index.html', context)
 
 def index_comentarios(request):
-	comentarios = get_list_or_404(Comentario.objects.order_by('correo'))
-	"""output = ', '.join([d.nombre for d in recetas])"""
-	context = {'lista_comentarios': comentarios }
-	"""return HttpResponse(output)"""
-	return render(request, 'index.html', context)
+    comentarios = Comentario.objects.order_by('correo')
+    context = {'comentarios': comentarios}
+    return render(request, 'comentario.html', context)
 
 
 # Vista basada en clases en todas las funcionalidades básicas (listado de los ingredientes).
@@ -273,7 +272,7 @@ def loginform(request):
         form = ComForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index.html')
+            return redirect('index_recetas')
     else:
         form = ComForm()
     return render(request, 'index.html', {'form': form})

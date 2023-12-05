@@ -28,25 +28,22 @@
 <div id="coment">
 <h3> Comentarios hechos por los seguidores sobre las recetas</h3>
 <div id="comentarios">
-<p><strong>unai@gmail.com:</strong> La receta de el pastel de zanahoria es maravillosa</p>
 <p><strong>alba@gmail.com:</strong> Recomiendo la sopa de tomate</p>
 <p><strong>laila@gmail.com:</strong> Los ingredientes del pescado al horno con verduras son faciles de conseguir y queda una receta muy rica. </p>
 <p><strong>juan@gmail.com:</strong> Un 10 a la tortilla de patata</p>
-<p><strong>emma@gmail.com:</strong> La receta de la tarta de manzana es maravillosa</p>
-<p><strong>maria@gmail.com:</strong> La textura que queda en el arroz con pollo te da una experiencia gastronimica increible. </p>
-<p><strong>lila@gmail.com:</strong> Increible la lasaña</p>
-<p><strong>jorge@gmail.com:</strong> Me ha encantado el flan</p>
+<a href="{% url 'index_comentarios' %}">Ver mas</a> 
 </div>
 <form id="formulario-comentario" method="post" action="{% url 'form' %}">
 	
 	{% csrf_token %}
 	{{form}}
-	<input type="submit" value="Submit" />
+	
+	<label for="correo">Introduce tu email: </label>
+    <input id="correo" type="text" name="correo" maxlength="20" required>
 	<label for="comentario">Comentario: </label>
     <input id="comentario" type="text" name="comentario" maxlength="600" required rows="4">
-    <label for="correo">Introduce tu email: </label>
-    <input id="correo" type="text" name="correo" maxlength="20" required>
-		
+    
+	<input type="submit" value="Submit" />
 	   
 	
 </form>

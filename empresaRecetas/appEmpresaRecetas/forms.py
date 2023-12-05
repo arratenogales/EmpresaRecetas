@@ -9,8 +9,6 @@ class RecetaForm(forms.ModelForm):
         fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'ingredientes', 'tipo', 'tiempo', 'detalle', 'accept']
 
 
-
-
 class ComForm(forms.ModelForm):
     class Meta:
         model = Comentario  

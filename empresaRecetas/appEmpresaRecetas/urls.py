@@ -12,7 +12,7 @@ urlpatterns = [
     path('receta/', views.IndexRecetasListView.as_view, name='index_recetas'),
     path('ingrediente/', views.IndexIngredientesListView.as_view, name='index_ingrediente'),
     path('tipo/', views.IndexTiposListView.as_view, name='index_tipo'),
-    path('receta/', views.loginform, name='form'),
+    path('form/', views.loginform, name='form'),
     #path('iniciar_sesion/', views.iniciar_sesion, name='iniciar_sesion'),
     #path('writters/', views.show_writters, name='writters'),
 
