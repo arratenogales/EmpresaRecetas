@@ -23,66 +23,6 @@ def show_formulario(request):
 
     return render(request, 'formulario.html', {'formulario': formulario})
 
-"""
-def show_formulario(request):
-    if request.method == 'POST':
-        form = UsuarioForm(request.POST)
-        if form.is_valid() and form.cleaned_data['Accept']:
-
-            email = form.cleaned_data['email']
-            if User.objects.filter(email=email).exists():
-                form.add_error('email', 'Este correo electrónico ya está registrado.')
-                return render(request, 'registro.html', {'form': form})
-
-            nuevo_usuario = User.objects.create_user(
-                nombre=form.cleaned_data['nombre'],
-                apellidos=form.cleaned_data['apellidos'],
-                email=email,
-                edad=form.cleaned_data['edad'],
-                direccion=form.cleaned_data['direccion'],
-                username=form.cleaned_data['username'],
-            )
-            nuevo_usuario.set_password(form.cleaned_data['password'])
-            nuevo_usuario.save()
-
-            # intento de permisos para editar recetas (management/commands/permissions.py)
-            if request.user.is_authenticated and isinstance(nuevo_usuario, User):
-                content_type = ContentType.objects.get_for_model(Receta)
-                add_permission = Permission.objects.get(content_type=content_type, codename='add_receta')
-                change_permission = Permission.objects.get(content_type=content_type, codename='change_receta')
-                delete_permission = Permission.objects.get(content_type=content_type, codename='delete_receta')
-                nuevo_usuario.user_permissions.add(add_permission, change_permission, delete_permission)
-
-
-            user = authenticate(username=form.cleaned_data['usuario'], password=form.cleaned_data['contraseña'])
-            login(request, user) #se supone que para que el usuario autenticado acceda a las vistas restringidas 
-                        
-            return redirect('portada')
-
-
-        else:
-            form.add_error('Accept', 'Debes aceptar las condiciones para registrarte.')
-
-
-    else:
-        form = UsuarioForm()
-
-    return render(request, 'registro.html', {'form': form})
-
-
-def post_usuario_form(request): 
-    form = UsuarioForm(request.POST)
-    if form.is_valid():
-        form.save() 
-        nombre = form.cleaned_data['nombre']
-        apellidos = form.cleaned_data['apellidos']        
-        return HttpResponse(f"Registro exitoso. Bienvenid@ {nombre} {apellidos}")
-
-
-
-"""
-
-
 def index_portada(request):
 
     recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM appEmpresaRecetas_Receta WHERE (tipo_id, duracion) IN ( SELECT tipo_id, MIN(duracion) as max_duracion FROM appEmpresaRecetas_Receta GROUP BY tipo_id)')
@@ -230,41 +170,6 @@ def show_tipo(request, tipo_id):
 	recetas = tipo.receta_set.all()
 	context = { 'recetas': recetas, 'tipo' : tipo }
 	return render(request, 'tipo.html', context)  
-"""	output = f'Detalles de un tipo: {tipo.id}, {tipo.nombre}. Recetas: {[e.nombre for e in Receta.receta_set.all()]}'"""
-"""return HttpResponse(output)"""
-
-
-"""
-
-from django.contrib.auth import authenticate, login
-from .forms import InicioSesionForm
-
-def iniciar_sesion(request):
-    if request.method == 'POST':
-        form = InicioSesionForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['usuario']
-            password = form.cleaned_data['contra']
-            
-            user = authenticate(request, username=username, password=password)
-            
-            if user is not None:
-                login(request, user)
-                print("Usuario autenticado y sesión establecida:", user)
-                # Redirigir a una página de éxito o a donde desees después del inicio de sesión
-                return redirect('EmpresaRecetas:writters')
-            else:
-                print("Credenciales no válidas")
-
-    else:
-        form = InicioSesionForm()
-
-    return render(request, 'login.html', {'form': form})
-
-def show_writters(request):
-    return render(request, 'writters.html')
-
-"""
 
 
 
