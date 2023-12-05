@@ -30,6 +30,8 @@ class Receta(models.Model):
     nombre = models.CharField(max_length=70)
     duracion = models.IntegerField()
     imagen = models.ImageField(upload_to='img',blank=True,null=True,verbose_name='Image')
+    video = models.URLField(blank=True, null=True)
+
     def __str__(self):
         return self.nombre
 
@@ -52,7 +54,6 @@ class Pregunta(models.Model):
 
 
     detalle = models.TextField(default='')
-    accept = models.BooleanField(default= False)
 
     def __str__(self):
         return f'{self.nombreReceta} - {self.nombre} {self.apellido}'

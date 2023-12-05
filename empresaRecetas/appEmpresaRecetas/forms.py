@@ -6,7 +6,7 @@ from .models import Pregunta, Group, User, Comentario
 class RecetaForm(forms.ModelForm):
     class Meta:
         model = Pregunta
-        fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'ingredientes', 'tipo', 'tiempo', 'detalle', 'accept']
+        fields = ['nombre', 'apellido', 'email', 'nombreReceta', 'ingredientes', 'tipo', 'tiempo', 'detalle']
 
 
 class ComForm(forms.ModelForm):

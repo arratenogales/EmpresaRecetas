@@ -201,7 +201,7 @@ def show_formulario(request):
     else:
         formulario = RecetaForm()
 
-    return render(request, 'formulario.html', {'formulario': formulario})
+    return render(request, 'formulario.html', {'form': formulario})
 
 #vistas relacionadas con el formulario de comentarios. 
 class LoginFormView(View):

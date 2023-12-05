@@ -6,7 +6,6 @@
 
     <form id="miFormulario" action="{% url 'formulario' %}" method="post">
         {% csrf_token %}
-        {{form}}
         <h1>¡Envianos tus recetas!</h1>
         <p>Aqui puedes enviarnos tus recetas para que las añadamos a la pagina web y que otros usuarios puedan disfrutar de ellas:</p>
 
@@ -47,10 +46,10 @@
             <textarea id="detalle" name="detalle" rows="4" cols="50"></textarea>
         </fieldset>
     
-        <input type="checkbox" id="accept" name="accept" value="Aceptar">Acepto las condiciones<br><br>
-    
+        <input type="checkbox" id="accept" name="accept" value="Aceptar"> Acepto las condiciones
+
         <p>
-            <input type="submit" value="Insertar Receta" / onclick="">
+            <input type="submit" value="Insertar Receta" onclick="">
         </p>
     </form>
 
