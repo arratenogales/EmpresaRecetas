@@ -110,7 +110,7 @@ def index_recetas(request):
 def index_comentarios(request):
 	comentarios = get_list_or_404(Comentario.objects.order_by('correo'))
 	"""output = ', '.join([d.nombre for d in recetas])"""
-	context = {'lista_recetas': comentarios }
+	context = {'lista_comentarios': comentarios }
 	"""return HttpResponse(output)"""
 	return render(request, 'index.html', context)
 
@@ -273,8 +273,7 @@ def loginform(request):
         form = ComForm(request.POST)
         if form.is_valid():
             form.save()
-            redirect('index.html')
+            return redirect('index.html')
     else:
         form = ComForm()
-
     return render(request, 'index.html', {'form': form})

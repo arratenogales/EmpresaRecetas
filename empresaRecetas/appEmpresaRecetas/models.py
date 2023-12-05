@@ -17,7 +17,7 @@ class Comentario(models.Model):
     correo = models.EmailField()
     comentario = models.CharField(max_length=500)
     def __str__(self):
-        return self.correo
+        return f"{self.correo} - {self.comentario}"
     
 class TipoPlato(models.Model):
     nombre = models.CharField(max_length=50)
