@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .models import Receta, TipoPlato, Ingrediente, Comentario
 from .forms import RecetaForm, ComForm
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView,View,TemplateView
 
 #from django.contrib.contenttypes.models import ContentType
 
@@ -11,20 +11,23 @@ from django.views.generic import ListView, DetailView
 def index(request):
     return HttpResponse("Recetas")
 
-
-def show_formulario(request):
-    if request.method == 'POST':
-        formulario = RecetaForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('index_recetas')      
-    else:
-        formulario = RecetaForm()
-
-    return render(request, 'formulario.html', {'formulario': formulario})
+#vista de la portada en la que se muetsran las 4 recetas 1 de cada tipo con menor duracion. 
+class IndexPortadaView(TemplateView):
+    template_name = 'portada.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        recetas_con_max_duracion = Receta.objects.raw('''
+            SELECT * FROM appEmpresaRecetas_Receta
+            WHERE (tipo_id, duracion) IN (
+                SELECT tipo_id, MIN(duracion) as max_duracion
+                FROM appEmpresaRecetas_Receta
+                GROUP BY tipo_id
+            )
+        ''')
+        context['lista_recetas_portada'] = recetas_con_max_duracion
+        return context
 
 def index_portada(request):
-
     recetas_con_max_duracion =  Receta.objects.raw('SELECT * FROM appEmpresaRecetas_Receta WHERE (tipo_id, duracion) IN ( SELECT tipo_id, MIN(duracion) as max_duracion FROM appEmpresaRecetas_Receta GROUP BY tipo_id)')
     context = {'lista_recetas_portada': recetas_con_max_duracion}
     return render(request, 'portada.html', context)
@@ -49,10 +52,7 @@ def index_recetas(request):
 	"""return HttpResponse(output)"""
 	return render(request, 'index.html', context)
 
-def index_comentarios(request):
-    comentarios = Comentario.objects.order_by('correo')
-    context = {'comentarios': comentarios}
-    return render(request, 'comentario.html', context)
+
 
 
 # Vista basada en clases en todas las funcionalidades básicas (listado de los ingredientes).
@@ -77,18 +77,6 @@ def index_ingredientes(request):
 from django.http import JsonResponse
 
 
-def agregar_comentario(request):
-    if request.method == 'POST':
-        correo = request.POST.get('correo')
-        comentario = request.POST.get('comentario')
-
-        if correo and comentario:
-            comentario = Comentario(correo=correo, comentario=comentario)
-            comentario.save()
-
-            return JsonResponse({'mensaje': 'Comentario agregado con éxito.'})
-
-    return JsonResponse({'mensaje': 'Error al agregar el comentario.'},correo, status=400)
 
 
 # Vista basada en clases en todas las funcionalidades básicas (listado de los tipos).
@@ -150,7 +138,7 @@ def show_ingrediente(request, ingrediente_id):
 	recetas = ingrediente.receta_set.all()
 	context = { 'ingrediente': ingrediente, 'recetas' : recetas }
 	return render(request, 'ingrediente.html', context) 
-"""	output = f'Detalles del ingrediente: {ingrediente.id}, {ingrediente.nombre}, {ingrediente.kcal}, {ingrediente.grasas}'"""
+
 
 
 
@@ -159,7 +147,6 @@ def show_ingrediente(request, ingrediente_id):
 class TipoDetailView(DetailView):
      model = TipoPlato
      template_name= 'tipo.html'
-
      def get_context_data(self, **kwargs):
         context = super(ImgredienteDetailView, self).get_context_data(**kwargs)
         context['titulo de la pagina'] = 'Detalles del tipo'
@@ -172,7 +159,65 @@ def show_tipo(request, tipo_id):
 	return render(request, 'tipo.html', context)  
 
 
+#VISTAS BASADAS EN CLASES sobre el formulario: 
 
+
+class IndexComentariosView(ListView):
+    model = Comentario
+    template_name= 'comentario.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comentarios = Comentario.objects.order_by('correo')
+        context['comentarios'] = comentarios
+        return context
+    
+def index_comentarios(request):
+    comentarios = Comentario.objects.order_by('correo')
+    context = {'comentarios': comentarios}
+    return render(request, 'comentario.html', context)
+
+#vista relacionada con el formulario de preguntas acerca de la receta. 
+class ShowFormularioView(View):
+    template_name = 'formulario.html'
+
+    def get(self, request):
+        formulario = RecetaForm()
+        return render(request, self.template_name, {'formulario': formulario})
+
+    def post(self, request):
+        formulario = RecetaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index_recetas')
+
+        return render(request, self.template_name, {'formulario': formulario})
+    
+def show_formulario(request):
+    if request.method == 'POST':
+        formulario = RecetaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index_recetas')      
+    else:
+        formulario = RecetaForm()
+
+    return render(request, 'formulario.html', {'formulario': formulario})
+
+#vistas relacionadas con el formulario de comentarios. 
+class LoginFormView(View):
+    template_name = 'index.html'
+
+    def get(self, request):
+        form = ComForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ComForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index_recetas')
+        return render(request, self.template_name, {'form': form})
+    
 def loginform(request):
     if request.method == 'POST':
         form = ComForm(request.POST)
