@@ -15,8 +15,9 @@ def index(request):
 def show_formulario(request):
     if request.method == 'POST':
         formulario = RecetaForm(request.POST)
-        formulario.save()
-#redurect        
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index_recetas')      
     else:
         formulario = RecetaForm()
 

@@ -1,4 +1,10 @@
+document.addEventListener('DOMContentLoaded', function(){
+  alert("Conozca todas nuestras recetas");
+});
+
+
 function agregarComentario() {
+    
     var correo = document.getElementById('correoq').value;
     var comentario = document.getElementById('comentarioq').value;
 
@@ -16,9 +22,7 @@ function agregarComentario() {
     
     nuevocom={
       correo:correo,comentario:comentario
-    }
-    
-    
+    }  
   }
 
   
