@@ -60,3 +60,4 @@ admin.site.register(TipoPlato)
 admin.site.register(Pregunta)
 admin.site.register(Comentario)
 
+    

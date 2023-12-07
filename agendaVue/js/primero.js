@@ -1,3 +1,34 @@
+/*import Vue from 'vue';
+import { firestorePlugin } from 'vuefire';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+
+Vue.use(firestorePlugin);
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCsf9zaLGWRe736BShZhykIAAB4Raspw34",
+  authDomain: "agendaiw-844ec.firebaseapp.com",
+  projectId: "agendaiw-844ec",
+  storageBucket: "agendaiw-844ec.appspot.com",
+  messagingSenderId: "326430926225",
+  appId: "1:326430926225:web:0a7385f09590fd64d66630",
+  measurementId: "G-ETLB3WD40V"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// Obtiene una instancia de Firestore
+const db = firebase.firestore();
+
+// Agrega la instancia de Firestore a Vue como $firestore
+Vue.prototype.$firestore = db;
+*/
 var appVue = new Vue({
     el: '#app-1',
     data: {
@@ -13,6 +44,21 @@ var appVue = new Vue({
           name: 'Arrate Nogales',
           email: 'arrate@gmail.com',
           phone: '678-456-213'
+        },
+        {
+          name: 'Ane San Juan',
+          email: 'ane@gmail.com',
+          phone: '622-699-847'
+        },
+        {
+          name: 'Aitziber Luis',
+          email: 'aitziber@gmail.com',
+          phone: '658-636-219'
+        },
+        {
+          name: 'Marina Villanueva',
+          email: 'marina@gmail.com',
+          phone: '615-893-861'
         }
       ] 
     },
@@ -21,6 +67,10 @@ var appVue = new Vue({
         return this.contactos.length;
       }
     },
+    /*
+    firestore: {
+      contactos: db.collection('contactos'),
+    },*/
     methods: {
      aniadirContacto: function (contact) {
         console.log('Añadiendo contacto:', contact);
