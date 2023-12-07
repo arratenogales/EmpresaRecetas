@@ -1,9 +1,12 @@
-/*import Vue from 'vue';
-import { firestorePlugin } from 'vuefire';
+/*
+import Vue from 'vue';
+import VueFire from 'vuefire';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-Vue.use(firestorePlugin);
+Vue.use(VueFire);
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -22,14 +25,15 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 // Obtiene una instancia de Firestore
 const db = firebase.firestore();
 
 // Agrega la instancia de Firestore a Vue como $firestore
 Vue.prototype.$firestore = db;
 */
-var appVue = new Vue({
+new Vue({
     el: '#app-1',
     data: {
       state: 'default',
