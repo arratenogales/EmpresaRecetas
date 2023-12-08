@@ -69,16 +69,20 @@ new Vue({
         }
       ] 
     },
+    mounted() {
+      const storedContactos = localStorage.getItem('contactos');
+      this.contactos = storedContactos ? JSON.parse(storedContactos) : [];
+    },
     computed: {
       contactCount() {
         return this.contactos.length;
       }
     },
-    /* */ 
+    /*
     firestore: {
       contactos: db.collection('contactos'),
     },  
-    
+     */ 
     methods: {
      aniadirContacto: function (contact) {
         console.log('Añadiendo contacto:', contact);
@@ -89,16 +93,29 @@ new Vue({
           phone: contact.phone
         });
         this.nuevoContacto = { name: '', email: '', phone: '' };
+        console.log(this.contactos);
       },
+      agregarContacto: function () {
+        this.contactos.push({
+            nombre: this.nuevoContacto.nombre,
+            email: this.nuevoContacto.email,
+            telefono: this.nuevoContacto.telefono
+        });
+
+        // Guardar estaciones en el almacenamiento local
+        localStorage.setItem('contactos', JSON.stringify(this.contactos));
+
+        this.nuevoContacto.nombre = '';
+        this.nuevaContacto.email = '';
+        this.nuevaContacto.telefono = '';
+    },
       changeState: function (newState) {
         this.state = newState;
       },
 
-      removeContact: function(contact) {
-        const index = this.contactos.indexOf(contact);
-        if (index !== -1) {
-          this.contactos.splice(index, 1);
-        }      
+      removeContact: function(index) {
+        this.contactos.splice(index, 1);
+        localStorage.setItem('contactos', JSON.stringify(this.contactos));     
       }
     }
   });
