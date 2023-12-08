@@ -35,7 +35,7 @@ const db = firebase.firestore();
 // Agrega la instancia de Firestore a Vue como $firestore
 Vue.prototype.$firestore = db;
 */
-/*
+/* */
 new Vue({
     el: '#app-1',
     data: {
@@ -74,11 +74,11 @@ new Vue({
         return this.contactos.length;
       }
     },
-    /*
+    /* */ 
     firestore: {
       contactos: db.collection('contactos'),
-    },*/
-    /*
+    },  
+    
     methods: {
      aniadirContacto: function (contact) {
         console.log('Añadiendo contacto:', contact);
@@ -102,7 +102,7 @@ new Vue({
       }
     }
   });
-  
+ /* 
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
     
 const db = getFirestore(app);
@@ -110,7 +110,7 @@ const db = getFirestore(app);
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 */
-
+/*
 // Firebase Firestore
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
   const db = getFirestore(app);
@@ -134,3 +134,39 @@ function aniadirContacto(contacto) {
     contactos.push(contacto);
     // ... Resto de tu código ...
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  new Vue({
+      el: '#app-1',
+      data: {
+          contactos: [], // Array para almacenar los contactos
+          nuevoContacto: { name: "", email: "", phone: "" } // Objeto para el nuevo contacto
+      },
+      methods: {
+          aniadirContacto: function () {
+              // Validar que todos los campos estén llenos
+              if (this.nuevoContacto.name && this.nuevoContacto.email && this.nuevoContacto.phone) {
+                  // Agregar el nuevo contacto localmente
+                  this.contactos.push({ ...this.nuevoContacto });
+
+                  // Agregar el nuevo contacto a Firebase Firestore
+                  this.agregarContactoFirestore(this.nuevoContacto);
+
+                  // Limpiar el formulario
+                  this.nuevoContacto = { name: "", email: "", phone: "" };
+              } else {
+                  alert("Por favor, complete todos los campos.");
+              }
+          },
+          /*
+          agregarContactoFirestore: async function (contacto) {
+              try {
+                  const docRef = await addDoc(collection(db, "contactos"), contacto);
+                  console.log("Contacto agregado con ID:", docRef.id);
+              } catch (e) {
+                  console.error("Error al agregar contacto:", e);
+              }
+          }
+      }
+  });
+}); */
