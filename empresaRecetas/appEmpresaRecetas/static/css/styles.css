@@ -126,11 +126,12 @@ nav {
   
   nav p {
     margin: 0;
-    text-align:center 
+    text-align:center; 
+    color: rgb(120, 96, 96);
   }
   
   nav a {
-    color: #fff; 
+    color: #edf3ed; 
     text-decoration: none; 
     margin-right: 15px; 
     font-size: 16px; 
