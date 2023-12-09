@@ -6,42 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Agenda">
     <meta name="author" content="e-ghost 2019">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@arratenogales">
-    <meta name="twitter:title" content="Título de tu página">
-    <meta name="twitter:description" content="Descripción de tu página">
-    <meta name="twitter:image" content="URL_de_la_imagen">
-    <title>AgendaVue</title>
+
+    <title itemprop="title">AgendaVue</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!--
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
--->
-
-
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Organization",
-            "name": "AgendaVue",
-            "url": "https://x.com",
-            "sameAs": [
-                "https://www.facebook.com/x",
-                "https://twitter.com/x"
-            ]
-        }
-    </script>
-    
-    <!--<script src="js/segunfo.js"></script>-->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,106 +27,43 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Vue -->
+    <script src="js/vue.js"></script> 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script>
-        new Vue({
-            el: '#app-1',
-            data: {
-                nuevoContacto: {
-                    name: '',
-                    email: '',
-                    phone: ''
-                },
-                contactos: [
-                    {
-                        name: 'Arrate Nogales',
-                        email: 'arrate@gmail.com',
-                        phone: '678-456-213'
-                    },
-                    {
-                        name: 'Ane San Juan',
-                        email: 'ane@gmail.com',
-                        phone: '622-699-847'
-                    },
-                    {
-                        name: 'Aitziber Luis',
-                        email: 'aitziber@gmail.com',
-                        phone: '658-636-219'
-                    },
-                    {
-                        name: 'Marina Villanueva',
-                        email: 'marina@gmail.com',
-                        phone: '615-893-861'
-                    }
-                ]
-            },
-            mounted() {
-                const storedContactos = localStorage.getItem('contactos');
-                this.contactos = storedContactos ? JSON.parse(storedContactos) : [];
-            },
-            computed: {
-                contactCount() {
-                    return this.contactos.length;
-                }
-            },
-            methods: {
-                agregarContacto() {
-                    this.contactos.push({
-                        name: this.nuevoContacto.name,
-                        email: this.nuevoContacto.email,
-                        phone: this.nuevoContacto.phone
-                    });
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebPage",
+            "name": "AgendaVue",
+            "description": "Descripción de tu página en JSON-LD",
+            "url": "URL_de_tu_página",
+            "image": "URL_de_la_imagen"
+        }
+        </script>
 
-                    localStorage.setItem('contactos', JSON.stringify(this.contactos));
+    <!--Twitter-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@tu_usuario_de_twitter">
+    <meta name="twitter:title" content="AgendaVue">
+    <meta name="twitter:description" content="Descripción de tu página en Twitter">
+    <meta name="twitter:image" content="URL_de_la_imagen">
 
-                    this.nuevoContacto.name = '';
-                    this.nuevoContacto.email = '';
-                    this.nuevoContacto.phone = '';
-                },
-                removeContact(index) {
-                    this.contactos.splice(index, 1);
-                    localStorage.setItem('contactos', JSON.stringify(this.contactos));
-                }
-            }
-        });
-    </script>
+    <!--Facebook-->
+    <meta property="og:url" content="URL_de_tu_página">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AgendaVue">
+    <meta property="og:description" content="Descripción de tu página en Facebook">
+    <meta property="og:image" content="URL_de_la_imagen">
+
 
 </head>
 
-<script src="js/vue.js"></script> 
+<body id="page-top" class="index" itemscope itemtype="http://schema.org/WebPage">
 
-<body id="page-top" class="index">
-<!--
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyCsf9zaLGWRe736BShZhykIAAB4Raspw34",
-          authDomain: "agendaiw-844ec.firebaseapp.com",
-          projectId: "agendaiw-844ec",
-          storageBucket: "agendaiw-844ec.appspot.com",
-          messagingSenderId: "326430926225",
-          appId: "1:326430926225:web:0a7385f09590fd64d66630",
-          measurementId: "G-ETLB3WD40V"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
--->
-    <!-- Navigation -->
-    <!-- Uso de Microdata -->
+   <!-- Navigation -->
+   <!--MicroData-->
     <nav class="navbar navbar-default navbar-fixed-top" itemscope itemtype="http://schema.org/SiteNavigationElement">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container" itemprop="publisher">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Cambiar navegación</span>
@@ -159,27 +73,19 @@
                 </button>
                 <a class="navbar-brand" href="#page-top" itemprop="url">AgendaVue</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" itemprop="hasPart" itemscope itemtype="http://schema.org/SiteNavigationElement">
-                <ul class="nav navbar-nav navbar-right" itemprop="mainEntity" itemscope itemtype="http://schema.org/ItemList">
-                    <li class="hidden" >
-                        <a href="#page-top"></a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" itemprop="url">
+                    <li class="hidden">
+                        <a href="#page-top" itemprop="url"></a>
                     </li>
-                    <li class="page-scroll" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="#contactos" itemprop="url">
-                            <span itemprop="name">Contactos</span>
-                        </a>
+                    <li class="page-scroll" itemprop="url">
+                        <a href="#contactos">Contactos</a>
                     </li>
-                    <li class="page-scroll" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="#nuevo" itemprop="url">
-                            <span itemprop="name">Añadir contacto</span>
-                        </a>
+                    <li class="page-scroll" itemprop="url">
+                        <a href="#nuevo">Añadir contacto</a>
                     </li>
-                    <li class="page-scroll" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                        <a href="#about" itemprop="url">
-                            <span itemprop="name">Acerca de...</span>
-                        </a>
+                    <li class="page-scroll" itemprop="url">
+                        <a href="#about">Acerca de...</a>
                     </li>
                 </ul>
             </div>
@@ -189,13 +95,13 @@
     </nav>
 
     <!-- Header -->
-    <!-- Uso de Microdata -->
+    <!--MicroData-->
     <header itemscope itemtype="http://schema.org/WPHeader">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" itemprop="headline">
                     <div class="intro-text">
-                        <span class="name" itemprop="headline">AgendaVue</span>
+                        <span class="name" itemprop="name">AgendaVue</span>
                         <hr class="star-light">
                         <span class="skills" itemprop="description">Agenda básica en Vue</span>
                     </div>
@@ -204,112 +110,161 @@
         </div>
     </header>
 
-    <!-- Contactos Grid Section -->
-    <!-- Uso de Microdata -->
-    <div id="app-1">
-<!-- Contactos Grid Section -->
-<section id="contactos" itemscope itemtype="http://schema.org/ItemList">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 itemprop="name">Contactos</h2>
-                <hr class="star-primary">
-            </div>
-        </div>
-    <div>
-            <div class="row">
-                <div class="col-xs-4">
-                    <h4 itemprop="name">Nombre</h4>
+    <!-- Contactos Grid Section-->
+    <!--RDFa-->
+    <div id="app" vocab="http://schema.org/" typeof="ItemList">
+        <section id="contactos" property="hasPart">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 property="name">Contactos</h2>
+                        <hr class="star-primary">
+                    </div>
                 </div>
-                <div class="col-xs-4">
-                    <h4 itemprop="email">Email</h4>
+                <div>
+                    
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <h4 property="name">Nombre</h4>
+                        </div>
+                        <div class="col-xs-4">
+                            <h4 property="email">Email</h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <h4 property="phone">Teléfono</h4>
+                        </div>
+                    </div>
+                    
+                    <template>
+                        <div>
+                            <div class="row" v-for="(contacto, index) in contactos" typeof="Person" property="itemListElement">
+                                <div class="col-xs-4" property="name">
+                                    {{contacto.name}}
+                                </div>
+                                <div class="col-xs-4" property="email">
+                                    {{contacto.email}}
+                                </div>
+                                <div class="col-xs-3"  property="telephone">
+                                    {{contacto.phone}}
+                                </div>
+                                <div class="col-xs-1">
+                                    <button v-on:click="deleteContacto(index)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-xs-12" v-if = "contactos.length == 0">
+                                    <p>No se ha encontrado ningún contacto.</p>
+                                </div>
+                            </div>
+                          </div>
+                    </template>
+                </div>   
+            </div>
+        </section>
+    
+    
+    
+        <!-- Añadir nuevo Section -->
+        <!-- RDFa -->
+        <section id="nuevo" typeof="http://schema.org/Person">
+            <div class="container" property="mainEntity">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 property="name">Añadir contacto</h2>
+                        <hr class="star-primary">
+                    </div>
                 </div>
-                <div class="col-xs-3">
-                    <h4 itemprop="phone">Teléfono</h4>
-                </div>
+                <template>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <form name="sentMessage" id="contactForm" novalidate property="contact">
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls" property="name">
+                                        <label>Nombre</label>
+                                        <input v-model="nuevoContacto.name" type="text" class="form-control" placeholder="Nombre" id="name">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls" property="email">
+                                        <label>Email</label>
+                                        <input v-model="nuevoContacto.email" type="email" class="form-control" placeholder="Email" id="email">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls" property="telephone">
+                                        <label>Teléfono</label>
+                                        <input v-model="nuevoContacto.phone" type="tel" class="form-control" placeholder="Número de teléfono" id="phone">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div id="success"></div>
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <button v-on:click="aniadirContacto" class="btn btn-success btn-lg">Añadir</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
         </div>
-    </div>  
-                        
-    <div>
-        <div class="row" v-for="(contact, index) in contactos">
-            <div class="col-xs-4">
-                {{contact.name}}
-            </div>
-            <div class="col-xs-4">
-                {{contact.email}}
-            </div>
-            <div class="col-xs-3">
-                {{contact.phone}}
-            </div>
-            <div class="col-xs-1">
-                <button v-on:click="removeContact(index)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12" v-if="contactos.length == 0">
-                <p>No se ha encontrado ningún contacto.</p>
-            </div>
-        </div>
-    </div> 
-</section>
-        <!-- cierre del app-1 -->
-</div>
 
-    <!-- Añadir nuevo Section -->
-    <!-- Uso de Microdata -->
-    <section id="nuevo" itemscope itemtype="http://schema.org/WebPage">
+    <!-- About Section -->
+    <!--RDFa-->
+    <section class="success" id="about" typeof="schema:WebPage">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 itemprop="name">Añadir contacto</h2>
-                    <hr class="star-primary">
+                    <h2 property="schema:name">Acerca de...</h2>
+                    <hr class="star-light">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="row control-group" itemscope itemtype="http://schema.org/Person">
-                            <div class="form-group col-xs-12 floating-label-form-group controls" itemprop="name">
-                                <label>Nombre</label>
-                                <input v-model="nuevoContacto.name" type="text" class="form-control" placeholder="Nombre" id="name" autocomplete="off">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group" itemscope itemtype="http://schema.org/Person">
-                            <div class="form-group col-xs-12 floating-label-form-group controls" itemprop="email">
-                                <label>Email</label>
-                                <input v-model="nuevoContacto.email" type="email" class="form-control" placeholder="Email" id="email", autocomplete="off">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group" itemscope itemtype="http://schema.org/Person">
-                            <div class="form-group col-xs-12 floating-label-form-group controls" itemprop="phone">
-                                <label>Teléfono</label>
-                                <input v-model="nuevoContacto.phone" type="tel" class="form-control" placeholder="Número de teléfono" id="phone", autocomplete="off">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <br>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button v-on:click="agregarContacto()" class="btn btn-success btn-lg">Añadir</button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="row" resource="#agendavue" typeof="schema:Organization">
+                <div class="col-lg-12 text-center">
+                    <p property="schema:description">AgendaVue es un proyecto simple en VueJS.</p>
+                    <p>Links a redes sociales</p>
+                    <ul class="list-inline">
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                        </li>
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </a>
+                        </li>
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <a href="https://twitter.com/" target="_blank" title="Twitter">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                        </li>
+                    </ul>
+                    <h3>Tweets que podrian interesarte</h3>
+                    <div class="center-tweets">
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/6sA5wu8smS">pic.twitter.com/6sA5wu8smS</a></p>&mdash; Elon Musk (@elonmusk) <a href="https://twitter.com/elonmusk/status/1732860921905549506?ref_src=twsrc%5Etfw">December 7, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </li>
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <blockquote class="twitter-tweet"><p lang="es" dir="ltr">☕ ¡Buenos días!<br>📰 La portada de El Mundo <a href="https://t.co/e2QHiXpded">pic.twitter.com/e2QHiXpded</a></p>&mdash; EL MUNDO (@elmundoes) <a href="https://twitter.com/elmundoes/status/1733379701874532490?ref_src=twsrc%5Etfw">December 9, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </li>
+                        <li property="schema:sameAs" typeof="schema:URL">
+                            <blockquote class="twitter-tweet"><p lang="es" dir="ltr">🔝 Xavi y Míchel: apuestas en firme de Barça y Girona<br><br>👉 El equipo azulgrana tiene asegurado a Xavi hasta junio de 2025 (más otro año opcional) y el rojiblanco a Míchel hasta 2026<a href="https://t.co/V9umjPsYfy">https://t.co/V9umjPsYfy</a></p>&mdash; Diario SPORT (@sport) <a href="https://twitter.com/sport/status/1733412417713942545?ref_src=twsrc%5Etfw">December 9, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   
-
-
-    
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
     <!-- Footer -->
-    <!-- Uso de Microdata -->
     <footer class="text-center" itemscope itemtype="http://schema.org/WPFooter">
         <div class="footer-above">
             <div class="container">
@@ -318,7 +273,7 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12" itemprop="copyrightHolder">
+                    <div class="col-lg-12">
                         Copyleft &copy; e-ghost 2019
                     </div>
                 </div>
@@ -347,12 +302,52 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
     
-    <!-- Vue -->
-    <script src="js/vue.js"></script>   
-    <!--
-    <script src="js/primero.js"></script>   
-        -->
+     <!-- Script de Vue-->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                header: 'AgendaVue',
+                contactos: [],
+                nuevoContacto: { name: '', email: '', phone: '' }
+            },
+            mounted() {
+            
+                this.contactos= [
+                    { name: 'Arrate Nogales', email: 'arrate@gmail.com', phone: '683 291 654' },
+                    { name: 'Ane San Juan', email: 'ane@gmail.com', phone: '633 227 897' },
+                    { name: 'Marina Villanueva', email: 'marina@gmail.com', phone: '682 573 321' },
+                    { name: 'Aitziber Luis', email: 'aitziber@gmail.com', phone: '628 432 655' }
+                ];
+                const storedContactos = localStorage.getItem('contactos');
+                this.contactos = JSON.parse(storedContactos);
+                localStorage.setItem('contactos', JSON.stringify(this.contactos));
+                
+            },
+            methods: {
+                aniadirContacto: function () {
+                    this.contactos.push({
+                        name: this.nuevoContacto.name,
+                        email: this.nuevoContacto.email,
+                        phone: this.nuevoContacto.phone
+                    });
 
+                    // Guardar estaciones en el almacenamiento local
+                    localStorage.setItem('contactos', JSON.stringify(this.contactos));
+
+                    this.nuevoContacto.name = '';
+                    this.nuevaContacto.email = '';
+                    this.nuevaContacto.phone = '';
+                },
+                deleteContacto: function (index) {
+                    this.contactos.splice(index, 1);
+
+                    // Actualizar el almacenamiento local después de eliminar una estación
+                    localStorage.setItem('contactos', JSON.stringify(this.contactos));
+                }
+            }
+        });
+    </script> 
 
 </body>
 
