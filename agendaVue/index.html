@@ -312,16 +312,8 @@
                 nuevoContacto: { name: '', email: '', phone: '' }
             },
             mounted() {
-            
-                this.contactos= [
-                    { name: 'Arrate Nogales', email: 'arrate@gmail.com', phone: '683 291 654' },
-                    { name: 'Ane San Juan', email: 'ane@gmail.com', phone: '633 227 897' },
-                    { name: 'Marina Villanueva', email: 'marina@gmail.com', phone: '682 573 321' },
-                    { name: 'Aitziber Luis', email: 'aitziber@gmail.com', phone: '628 432 655' }
-                ];
                 const storedContactos = localStorage.getItem('contactos');
                 this.contactos = JSON.parse(storedContactos);
-                localStorage.setItem('contactos', JSON.stringify(this.contactos));
                 
             },
             methods: {
